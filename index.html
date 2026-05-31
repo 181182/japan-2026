@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan 2026 · Trip Dashboard</title>
+<style>
+:root{
+  --bg:#0f1115; --surface:#181b22; --surface2:#1f242d; --line:#2a3039;
+  --text:#e8eaed; --muted:#9aa3b0; --faint:#6b7480;
+  --kanazawa:#a78bfa; --nagano:#34d399; --tokyo:#f472b6; --osaka:#fb923c; --kyoto:#60a5fa;
+  --accent:#f59e0b; --green:#34d399; --red:#f87171; --amber:#fbbf24; --blue:#60a5fa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1000px;margin:0 auto;padding:0 1rem 4rem}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(15,17,21,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .inner{max-width:1000px;margin:0 auto;display:flex;gap:4px;padding:0.55rem 1rem;overflow-x:auto;align-items:center}
+nav a{color:var(--muted);font-size:13px;padding:5px 11px;border-radius:8px;white-space:nowrap}
+nav a:hover{background:var(--surface2);color:var(--text);text-decoration:none}
+nav .brand{font-weight:600;color:var(--text);font-size:13px;margin-right:8px}
+
+/* hero */
+.hero{padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--line)}
+.hero h1{font-size:30px;font-weight:600;letter-spacing:-0.5px}
+.hero .dates{color:var(--accent);font-size:15px;margin-top:4px;font-weight:500}
+.hero .tagline{color:var(--muted);font-size:14px;margin-top:10px;max-width:620px}
+
+/* metric cards */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:1.4rem 0}
+.metric{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0.85rem 1rem}
+.metric .v{font-size:24px;font-weight:600}
+.metric .l{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* journey strip */
+.journey{display:flex;gap:0;margin:1.4rem 0;flex-wrap:wrap}
+.leg{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0.9rem;position:relative;margin:4px}
+.leg .city{font-size:16px;font-weight:600;display:flex;align-items:center;gap:7px}
+.leg .dot{width:10px;height:10px;border-radius:50%}
+.leg .when{font-size:12px;color:var(--muted);margin-top:3px}
+.leg .nights{font-size:11px;color:var(--faint);margin-top:6px}
+.leg .hotel{font-size:12px;color:var(--text);margin-top:7px;border-top:1px solid var(--line);padding-top:7px}
+
+section{padding:2rem 0 0.5rem;scroll-margin-top:60px}
+section h2{font-size:21px;font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:0.4rem}
+section .lead{color:var(--muted);font-size:14px;margin-bottom:1.1rem;max-width:680px}
+h3{font-size:15px;font-weight:600;margin:1rem 0 0.5rem}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;margin-bottom:0.8rem}
+.card.accent-green{border-left:3px solid var(--green)}
+.card.accent-red{border-left:3px solid var(--red)}
+.card.accent-amber{border-left:3px solid var(--amber)}
+.card.accent-blue{border-left:3px solid var(--blue)}
+.card h3{margin-top:0}
+.card p,.card li{font-size:13px;color:var(--muted)}
+.card strong{color:var(--text);font-weight:600}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.8rem}
+
+.badge{font-size:11px;padding:2px 9px;border-radius:999px;font-weight:600;white-space:nowrap;display:inline-block}
+.b-green{background:rgba(52,211,153,0.15);color:var(--green)}
+.b-red{background:rgba(248,113,113,0.15);color:var(--red)}
+.b-amber{background:rgba(251,191,36,0.15);color:var(--amber)}
+.b-blue{background:rgba(96,165,250,0.15);color:var(--blue)}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+th{text-align:left;padding:7px 9px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line);font-size:11px;text-transform:uppercase;letter-spacing:0.4px}
+td{padding:7px 9px;border-bottom:1px solid var(--line);color:var(--text);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.total td{font-weight:600;background:var(--surface2)}
+
+.linkbtn{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--blue);border:1px solid var(--line);border-radius:7px;padding:5px 11px;margin:3px 4px 0 0;background:var(--surface2)}
+.linkbtn:hover{border-color:var(--blue);text-decoration:none}
+
+/* link hub */
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0.8rem}
+.hubcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
+.hubcard h3{margin-top:0;display:flex;align-items:center;gap:7px}
+.hubrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.hubrow:last-child{border-bottom:none}
+.hubrow .label{color:var(--text)}
+.hubrow .sub{color:var(--faint);font-size:11px}
+.chk{width:15px;height:15px;border:1.5px solid var(--faint);border-radius:4px;flex-shrink:0;cursor:pointer}
+.chk.done{background:var(--green);border-color:var(--green)}
+
+.warn{background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);border-radius:9px;padding:0.6rem 0.85rem;margin:0.6rem 0;font-size:12.5px;color:var(--amber)}
+.tip{background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);border-radius:9px;padding:0.6rem 0.85rem;margin:0.6rem 0;font-size:12.5px;color:var(--blue)}
+.win{background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.25);border-radius:9px;padding:0.6rem 0.85rem;margin:0.6rem 0;font-size:12.5px;color:var(--green)}
+
+.daygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.7rem}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:0.85rem;border-top:3px solid var(--line)}
+.day .d{font-size:11px;color:var(--faint);font-weight:600}
+.day .t{font-size:14px;font-weight:600;margin:2px 0 6px}
+.day ul{list-style:none}
+.day li{font-size:12px;color:var(--muted);padding:2px 0 2px 13px;position:relative}
+.day li::before{content:"·";position:absolute;left:3px;color:var(--faint)}
+.tag{font-size:10.5px;padding:1px 7px;border-radius:999px;background:var(--surface2);color:var(--muted);margin-right:3px}
+
+footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--faint);font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin:0.6rem 0 0}
+.legend span{display:flex;align-items:center;gap:5px}
+.ld{width:9px;height:9px;border-radius:50%}
+</style>
+</head>
+<body>
+
+<nav><div class="inner">
+  <span class="brand">🇯🇵 Japan 2026</span>
+  <a href="#hub">Links</a>
+  <a href="#passes">Passes</a>
+  <a href="#transit">IC &amp; buses</a>
+  <a href="#baggage">Baggage</a>
+  <a href="#frequency">Trains</a>
+  <a href="#brew">Breweries</a>
+  <a href="#days">Day-by-day</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <h1>Japan trip dashboard</h1>
+  <div class="dates">2 – 21 July 2026 · Bergen → KIX → Bergen</div>
+  <p class="tagline">Two travellers, mid-range, relaxed pace. Lars &amp; Berit join Tokyo→Osaka (7–16 Jul). Everything you need to track, book, and ride — in one place.</p>
+
+  <div class="metrics">
+    <div class="metric"><div class="v">18</div><div class="l">days on the ground</div></div>
+    <div class="metric"><div class="v">5</div><div class="l">cities · 5 hotels</div></div>
+    <div class="metric"><div class="v">~¥62k</div><div class="l">est. transport / person</div></div>
+    <div class="metric"><div class="v">¥38k</div><div class="l">saved vs nationwide pass</div></div>
+  </div>
+
+  <div class="journey">
+    <div class="leg"><div class="city"><span class="dot" style="background:var(--kanazawa)"></span>Kanazawa</div><div class="when">Jul 2 – 4</div><div class="nights">2 nights</div><div class="hotel">🏨 Hotel Torifito</div></div>
+    <div class="leg"><div class="city"><span class="dot" style="background:var(--nagano)"></span>Nagano</div><div class="when">Jul 4 – 7</div><div class="nights">3 nights</div><div class="hotel">🏨 JAL City Nagano</div></div>
+    <div class="leg"><div class="city"><span class="dot" style="background:var(--tokyo)"></span>Tokyo</div><div class="when">Jul 7 – 12</div><div class="nights">5 nights</div><div class="hotel">🏨 Sunroute Stellar Ueno</div></div>
+    <div class="leg"><div class="city"><span class="dot" style="background:var(--osaka)"></span>Osaka</div><div class="when">Jul 12 – 17</div><div class="nights">5 nights</div><div class="hotel">🏨 Bridge Hotel Shinsaibashi</div></div>
+    <div class="leg"><div class="city"><span class="dot" style="background:var(--kyoto)"></span>Kyoto</div><div class="when">Jul 17 – 20</div><div class="nights">3 nights</div><div class="hotel">🏨 Kyoto Century Hotel</div></div>
+  </div>
+</header>
+
+<!-- ===== LINKS HUB ===== -->
+<section id="hub">
+  <h2>🔗 Links &amp; booking tracker</h2>
+  <p class="lead">Everything to keep an eye on. Tap a checkbox to mark it done (saved in your browser). Book the lottery items first — they sell out.</p>
+
+  <div class="hub">
+
+    <div class="hubcard">
+      <h3>🎟️ Book now — sells out</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://www.suntory.com/factory/yamazaki/" target="_blank">Suntory Yamazaki tour</a></span><br><span class="sub">Lottery · whisky distillery · highest priority</span></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://www.teamlab.art/e/planets/" target="_blank">teamLab Planets Tokyo</a></span><br><span class="sub">Timed tickets · books out weeks ahead</span></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://www.ghibli-museum.jp/en/" target="_blank">Ghibli Museum</a></span><br><span class="sub">Monthly lottery · for the GF</span></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://www.asahibeer.co.jp/brewery/suita/" target="_blank">Asahi Suita factory tour</a></span><br><span class="sub">Reserve online · Osaka</span></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://www.kaiyukan.com/language/eng/" target="_blank">Kaiyukan Aquarium</a></span><br><span class="sub">Timed tickets · Osaka</span></span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🚆 Rail tickets &amp; passes</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://www.westjr.co.jp/global/en/ticket/pass/kansai_hiroshima/" target="_blank">Kansai-Hiroshima Area Pass</a></span><br><span class="sub">5-day · activate Jul 14</span></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://smart-ex.jp/en/" target="_blank">smartEX — Tokyo→Osaka Hikari</a></span><br><span class="sub">Reserve Jul 12 · right-side seat for Fuji</span></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label"><a href="https://www.eki-net.com/en/" target="_blank">JR East — Hokuriku legs</a></span><br><span class="sub">KIX→Kanazawa→Nagano→Tokyo</span></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span style="flex:1"><span class="label">ICOCA / Suica (IC card)</span><br><span class="sub">Grab at KIX, or add to phone wallet</span></span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🏨 Hotels (all confirmed)</h3>
+      <div class="hubrow"><span class="label">Hotel Torifito Kanazawa</span><span class="sub">Jul 2–4</span></div>
+      <div class="hubrow"><span class="label">JAL City Nagano</span><span class="sub">Jul 4–7</span></div>
+      <div class="hubrow"><span class="label">Sunroute Stellar Ueno</span><span class="sub">Jul 7–12</span></div>
+      <div class="hubrow"><span class="label">Bridge Hotel Shinsaibashi</span><span class="sub">Jul 12–17</span></div>
+      <div class="hubrow"><span class="label">Kyoto Century Hotel</span><span class="sub">Jul 17–20</span></div>
+      <div style="margin-top:8px"><a class="linkbtn" href="https://secure.booking.com/mytrips.html" target="_blank">→ Booking.com My Trips</a></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🗺️ Travel routes (Maps)</h3>
+      <div style="margin-top:2px">
+        <a class="linkbtn" href="https://www.google.com/maps/dir/Kansai+International+Airport/Kanazawa+Station" target="_blank">KIX → Kanazawa</a>
+        <a class="linkbtn" href="https://www.google.com/maps/dir/Kanazawa+Station/Nagano+Station" target="_blank">Kanazawa → Nagano</a>
+        <a class="linkbtn" href="https://www.google.com/maps/dir/Nagano+Station/Ueno+Station+Tokyo" target="_blank">Nagano → Tokyo</a>
+        <a class="linkbtn" href="https://www.google.com/maps/dir/Tokyo+Station/Shin-Osaka+Station" target="_blank">Tokyo → Osaka</a>
+        <a class="linkbtn" href="https://www.google.com/maps/dir/Shin-Osaka+Station/Hiroshima+Station" target="_blank">Osaka → Hiroshima</a>
+        <a class="linkbtn" href="https://www.google.com/maps/dir/Osaka+Station/Kyoto+Station" target="_blank">Osaka → Kyoto</a>
+        <a class="linkbtn" href="https://www.google.com/maps/dir/Kyoto+Station/Kansai+International+Airport" target="_blank">Kyoto → KIX</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="warn">🔐 Privacy note: don't paste your personal Booking.com confirmation links (they contain an <code>auth_key</code> that exposes the booking) into a published web page. The generic "My Trips" link above is safe.</div>
+</section>
+
+<!-- ===== PASSES ===== -->
+<section id="passes">
+  <h2>🎫 JR pass strategy</h2>
+  <p class="lead">Your big legs are spread across 18 days, so an all-you-can-ride nationwide pass is poor value. Mix individual tickets with one regional pass instead.</p>
+
+  <div class="win"><strong>Bottom line:</strong> Skip the ~¥100,000 nationwide pass. Individual tickets for the north + a Kansai-Hiroshima Area Pass for the west ≈ ¥62,000/person. All figures approximate 2026 — verify at booking.</div>
+
+  <div class="grid2">
+    <div class="card accent-green">
+      <h3>✅ Recommended plan <span class="badge b-green">~¥62k</span></h3>
+      <table>
+        <tr><th>Component</th><th>≈ / person</th></tr>
+        <tr><td>3 Hokuriku legs (individual)</td><td>¥26,500</td></tr>
+        <tr><td>Tokyo → Osaka (Hikari)</td><td>¥14,000</td></tr>
+        <tr><td>Kansai-Hiroshima Pass (5d)</td><td>~¥18,000</td></tr>
+        <tr><td>Kyoto → KIX (Haruka)</td><td>¥3,600</td></tr>
+        <tr class="total"><td>Total</td><td>~¥62,000</td></tr>
+      </table>
+    </div>
+    <div class="card accent-red">
+      <h3>❌ Nationwide JR Pass <span class="badge b-red">avoid</span></h3>
+      <p>21-day pass ≈ <strong>¥100,000</strong>. Even buying every ticket individually (~¥64,700) beats it by ~¥35,000. Built for people criss-crossing the country in one week — not your pace.</p>
+      <p style="margin-top:8px">The <strong>Hokuriku Arch Pass</strong> (¥35,000 since Mar 2026) also loses to individual tickets here because you travel that route one-way, not round-trip.</p>
+    </div>
+  </div>
+
+  <div class="card accent-amber">
+    <h3>The one catch ⚠️</h3>
+    <p>The Kansai-Hiroshima Pass is <strong>5 consecutive days</strong>, so it can't cover both Hiroshima (Jul 14) and the airport run (Jul 20) — 6 days apart. Activate it Jul 14 (it then covers Hiroshima + Miyajima ferry + Nara + Osaka→Kyoto + Kyoto local trains through Jul 18), and buy the final Kyoto→KIX Haruka separately.</p>
+  </div>
+</section>
+
+<!-- ===== TRANSIT ===== -->
+<section id="transit">
+  <h2>💳 IC cards &amp; local transport</h2>
+  <p class="lead">One tap-card each for everything off-pass; add a city pass only where it clearly pays.</p>
+
+  <div class="card accent-green">
+    <h3>IC card — get this first</h3>
+    <p><strong>Easiest:</strong> add Suica or ICOCA to your phone wallet (especially iPhone) — no queue, no deposit, top up with your card. <strong>Physical:</strong> grab an ICOCA at KIX on arrival. Works on metros, buses, local trains, konbini, and vending machines nationwide. Start with ¥3,000–5,000 loaded.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>🟣 Kanazawa</h3><p>Buy the <strong>Loop Bus day pass (~¥600)</strong> — hits every sight, saves your legs. From the East Gate bus terminal.</p></div>
+    <div class="card"><h3>🟢 Nagano</h3><p>Just tap your IC card. Bus line 1 to Zenkoji; trains to Matsumoto. No pass needed.</p></div>
+    <div class="card"><h3>🩷 Tokyo</h3><p><strong>Tokyo Subway Ticket</strong> (24h ¥800 / 48h ¥1,200 / 72h ¥1,500) for metro days. IC card for JR Yamanote hops.</p></div>
+    <div class="card"><h3>🟠 Osaka</h3><p>Mostly walkable from your hotel. IC card for the subway. <strong>Osaka Amazing Pass</strong> (~¥3,300) only if you cram a big sightseeing day.</p></div>
+    <div class="card accent-amber"><h3>🔵 Kyoto</h3><p>The ¥700 bus day pass was <strong>scrapped in 2024</strong>. Tap your IC card on buses, or get the subway+bus pass (~¥1,100). <strong>Taxi between far temples</strong> — cheap and easy on the legs.</p></div>
+  </div>
+</section>
+
+<!-- ===== BAGGAGE ===== -->
+<section id="baggage">
+  <h2>🧳 Baggage forwarding</h2>
+  <p class="lead">Takuhaibin (Yamato "Kuroneko"): ~¥2,000–2,500 per suitcase per hop, next-day hotel-to-hotel. The biggest comfort upgrade of the trip.</p>
+
+  <div class="card">
+    <table>
+      <tr><th>Move</th><th>Forward?</th><th>Notes</th></tr>
+      <tr><td>Kanazawa → Nagano (Jul 4)</td><td><span class="badge b-blue">optional</span></td><td>One easy transfer — carry or forward.</td></tr>
+      <tr><td>Nagano → Tokyo (Jul 7)</td><td><span class="badge b-blue">recommended</span></td><td>Send Jul 6. JAL City staff do this routinely.</td></tr>
+      <tr><td>Tokyo → Osaka (Jul 12)</td><td><span class="badge b-green">essential</span></td><td>Send Jul 11. Long leg, huge stations.</td></tr>
+      <tr><td>Osaka → Kyoto (Jul 17)</td><td><span class="badge b-amber">skip</span></td><td>Only ~28 min — just carry.</td></tr>
+      <tr><td>Kyoto → KIX (Jul 20)</td><td><span class="badge b-green">essential</span></td><td>Send <strong>Jul 18</strong> — airports need 48–72h.</td></tr>
+    </table>
+    <div class="warn">⚠ The Kyoto→airport send is the one everyone forgets — do it Jul 18 from reception. You can also ship fabric/electronics purchases straight home from Yamato or a post office.</div>
+  </div>
+</section>
+
+<!-- ===== FREQUENCY ===== -->
+<section id="frequency">
+  <h2>🚄 Train frequency</h2>
+  <p class="lead">Every leg runs at least every 30–60 min, so no day hinges on one train. Reserve seats for July anyway.</p>
+
+  <div class="card">
+    <table>
+      <tr><th>Leg</th><th>Train</th><th>Time</th><th>Frequency</th></tr>
+      <tr><td>KIX → Kanazawa</td><td>Haruka + Thunderbird</td><td>~3h30</td><td>Thunderbird ~every 40m</td></tr>
+      <tr><td>Kanazawa → Nagano</td><td>Hakutaka / Kagayaki</td><td>1h05–1h26</td><td>~hourly (21/day)</td></tr>
+      <tr><td>Nagano → Tokyo</td><td>Asama (stops Ueno)</td><td>~1h45</td><td>~hourly (16/day)</td></tr>
+      <tr><td>Tokyo → Osaka</td><td>Hikari (not Nozomi)</td><td>~2h50</td><td>~every 30m</td></tr>
+      <tr><td>Osaka → Hiroshima</td><td>Sakura / Hikari</td><td>~1h25</td><td>several/hour</td></tr>
+      <tr><td>Osaka → Kyoto</td><td>JR rapid</td><td>~28m</td><td>every 10–15m</td></tr>
+      <tr><td>Kyoto → KIX</td><td>Haruka</td><td>~75m</td><td>every 30m</td></tr>
+    </table>
+    <div class="warn">⚠ Lars &amp; Berit → Seoul (Jul 17): Nankai Rapi:t, Namba → KIX, ~40m, ~¥1,430. Not on any JR pass.</div>
+  </div>
+</section>
+
+<!-- ===== BREWERIES ===== -->
+<section id="brew">
+  <h2>🥃 Breweries &amp; distilleries</h2>
+  <p class="lead">Full-scale, proper operations with real guided tours — no basement nano-breweries.</p>
+
+  <div class="card accent-green">
+    <h3>Suntory Yamazaki Distillery <span class="badge b-amber">book ASAP · lottery</span></h3>
+    <p>Birthplace of Japanese whisky, maker of Yamazaki single malt. Real mash tuns, washbacks, pot stills and ageing warehouses. <strong>On your Osaka–Kyoto line</strong> — 10 min walk from JR Yamazaki Station (covered by your pass). Craftsmanship Tour: 80 min, ¥3,000, exclusive tastings. Museum + tasting lounge as the backup if tours sell out. English available, 20+ only.</p>
+    <div class="tip">Best slot: a half-day from Kyoto (Jul 18/19), or a stop on the Jul 17 move. Tours run on a monthly lottery — enter the instant July opens.</div>
+    <a class="linkbtn" href="https://www.suntory.com/factory/yamazaki/" target="_blank">→ Book</a>
+    <a class="linkbtn" href="https://www.google.com/maps/search/Suntory+Yamazaki+Distillery" target="_blank">→ Maps</a>
+  </div>
+
+  <div class="grid2">
+    <div class="card accent-blue">
+      <h3>Asahi Suita Factory <span class="badge b-blue">Osaka</span></h3>
+      <p>Birthplace of Asahi, recently rebuilt with projection mapping, a VR "dive into the fermentation tank," and a Super Dry ride — then fresh Super Dry tastings. ~¥1,000, ~1h. 10 min from Suita Station (on your pass). Reserve online.</p>
+      <a class="linkbtn" href="https://www.asahibeer.co.jp/brewery/suita/" target="_blank">→ Book</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Asahi+Beer+Suita+Factory" target="_blank">→ Maps</a>
+    </div>
+    <div class="card accent-blue">
+      <h3>Gekkeikan + Fushimi <span class="badge b-blue">Kyoto · Jul 18</span></h3>
+      <p>World's leading sake producer; Meiji-era working brewery in Fushimi, Kyoto's sake quarter (Gekkeikan, Kizakura &amp; more). ~¥600 with tastings + a bottle gift. <strong>Same area as Fushimi Inari</strong> — shrine at sunrise, sake by late morning.</p>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Gekkeikan+Okura+Sake+Museum+Fushimi" target="_blank">→ Maps</a>
+    </div>
+    <div class="card accent-blue">
+      <h3>Fukumitsuya <span class="badge b-blue">Kanazawa · Jul 3</span></h3>
+      <p>Revered sake house since 1625, brewery + tasting salon open to visitors, 5 min from the samurai district. Gold-leaf sake is the local signature. Fits your Jul 3 day.</p>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Fukumitsuya+Sake+Brewery+Kanazawa" target="_blank">→ Maps</a>
+    </div>
+    <div class="card accent-blue">
+      <h3>Saijo Sake Town <span class="badge b-blue">Jul 14 add-on</span></h3>
+      <p>One of Japan's three great sake regions — 8+ breweries on Sakagura-dori, most open for tasting, by Saijo Station (~30 min from Hiroshima, on your pass). Peace memorial morning + sake afternoon.</p>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Saijo+Sake+Breweries+Higashihiroshima" target="_blank">→ Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAYS ===== -->
+<section id="days">
+  <h2>📅 Day-by-day</h2>
+  <p class="lead">Days with Lars &amp; Berit (7–16 Jul) are theirs to lead — your own options are noted.</p>
+  <div class="legend">
+    <span><span class="ld" style="background:var(--kanazawa)"></span>Kanazawa</span>
+    <span><span class="ld" style="background:var(--nagano)"></span>Nagano</span>
+    <span><span class="ld" style="background:var(--tokyo)"></span>Tokyo</span>
+    <span><span class="ld" style="background:var(--osaka)"></span>Osaka</span>
+    <span><span class="ld" style="background:var(--kyoto)"></span>Kyoto</span>
+  </div>
+
+  <h3>🟣 Kanazawa</h3>
+  <div class="daygrid">
+    <div class="day" style="border-top-color:var(--kanazawa)"><div class="d">JUL 2</div><div class="t">Arrive &amp; rest</div><ul><li>Land KIX 12:35 → Kanazawa ~17:00</li><li>Hotel onsen, dinner in Katamachi</li><li>Set up bag forward for Nagano</li></ul></div>
+    <div class="day" style="border-top-color:var(--kanazawa)"><div class="d">JUL 3</div><div class="t">Gardens &amp; sake</div><ul><li>Kenroku-en garden (loop bus)</li><li>Nagamachi samurai district</li><li>Fukumitsuya sake + Higashi Chaya</li></ul><span class="tag">gold leaf</span><span class="tag">sake</span></div>
+    <div class="day" style="border-top-color:var(--kanazawa)"><div class="d">JUL 4</div><div class="t">Museum → Nagano</div><ul><li>21st Century Museum of Art</li><li>Hakutaka to Nagano (~1h26)</li><li>Dusk Zenkoji by hotel</li></ul></div>
+  </div>
+
+  <h3>🟢 Nagano</h3>
+  <div class="daygrid">
+    <div class="day" style="border-top-color:var(--nagano)"><div class="d">JUL 5</div><div class="t">Temple &amp; beer</div><ul><li>Zenkoji + Nakamise oyaki</li><li>Yamanoma Brewery (English owner)</li><li>Mallika Brewing</li></ul><span class="tag">craft beer</span></div>
+    <div class="day" style="border-top-color:var(--nagano)"><div class="d">JUL 6</div><div class="t">Matsumoto day trip</div><ul><li>Matsumoto Castle (40 min train)</li><li>Matsumoto Brewing Co</li><li>Back by 18:00</li></ul></div>
+    <div class="day" style="border-top-color:var(--nagano)"><div class="d">JUL 7</div><div class="t">→ Tokyo</div><ul><li>Asama to Ueno (~1h45)</li><li>Lars &amp; Berit arrive 🎉</li><li>Easy evening in Ueno/Asakusa</li></ul></div>
+  </div>
+
+  <h3>🩷 Tokyo · with Lars &amp; Berit</h3>
+  <div class="daygrid">
+    <div class="day" style="border-top-color:var(--tokyo)"><div class="d">JUL 8</div><div class="t">Akihabara</div><ul><li>M: Yodobashi (IoT fl.5), Super Potato, Tsukumo</li><li>GF: Animate, Mandarake</li><li>Senso-ji + teamLab option</li></ul><span class="tag">gaming</span><span class="tag">anime</span></div>
+    <div class="day" style="border-top-color:var(--tokyo)"><div class="d">JUL 9</div><div class="t">Harajuku + fabric</div><ul><li>GF: KIDDY LAND, Sailor Moon store</li><li>Nippori Fabric Town (Tomato)</li><li>M: Baird Beer Harajuku</li></ul></div>
+    <div class="day" style="border-top-color:var(--tokyo)"><div class="d">JUL 10</div><div class="t">teamLab + palace</div><ul><li>teamLab Planets (booked!)</li><li>Imperial Palace East Gardens</li></ul></div>
+    <div class="day" style="border-top-color:var(--tokyo)"><div class="d">JUL 11</div><div class="t">Shinjuku</div><ul><li>M: Yodobashi Shinjuku</li><li>GF: Okadaya (6 floors craft)</li><li>Night &amp; Light show + Golden Gai</li></ul></div>
+  </div>
+
+  <h3>🟠 Osaka · with Lars &amp; Berit</h3>
+  <div class="daygrid">
+    <div class="day" style="border-top-color:var(--osaka)"><div class="d">JUL 12</div><div class="t">→ Osaka</div><ul><li>Hikari (right side for Fuji)</li><li>Dotonbori street food</li><li>Free ramen at hotel 8:30pm</li></ul></div>
+    <div class="day" style="border-top-color:var(--osaka)"><div class="d">JUL 13</div><div class="t">Castle + beer</div><ul><li>Osaka Castle + park</li><li>Asahi Suita factory tour</li><li>Schwa2 / WCB craft beer</li></ul><span class="tag">brewery</span></div>
+    <div class="day" style="border-top-color:var(--osaka)"><div class="d">JUL 14</div><div class="t">Hiroshima</div><ul><li>Peace Museum + atomic dome</li><li>Miyajima ferry (on pass)</li><li>Saijo sake town add-on</li></ul></div>
+    <div class="day" style="border-top-color:var(--osaka)"><div class="d">JUL 15</div><div class="t">Recovery</div><ul><li>GF: nani IRO fabric atelier</li><li>Kaiyukan aquarium</li><li>Den Den Town (anime/tech)</li></ul></div>
+    <div class="day" style="border-top-color:var(--osaka)"><div class="d">JUL 16</div><div class="t">Nara</div><ul><li>Deer park (flat, 30 min)</li><li>Todai-ji great Buddha</li><li>Parents do their own Kyoto/Nara</li></ul></div>
+  </div>
+
+  <h3>🔵 Kyoto · just you two</h3>
+  <div class="daygrid">
+    <div class="day" style="border-top-color:var(--kyoto)"><div class="d">JUL 17</div><div class="t">→ Kyoto</div><ul><li>Parents fly to Seoul 👋</li><li>JR to Kyoto (~28 min)</li><li>Nishiki Market evening</li></ul></div>
+    <div class="day" style="border-top-color:var(--kyoto)"><div class="d">JUL 18</div><div class="t">Fushimi + Arashiyama</div><ul><li>Fushimi Inari at sunrise</li><li>Gekkeikan sake (same area)</li><li>Bamboo grove · SEND BAGS TO KIX</li></ul><span class="tag">sake</span></div>
+    <div class="day" style="border-top-color:var(--kyoto)"><div class="d">JUL 19</div><div class="t">Golden Pavilion</div><ul><li>Kinkaku-ji + Nijo Castle</li><li>Nomura Tailor fabric/yarn</li><li>Farewell teppanyaki</li></ul></div>
+    <div class="day" style="border-top-color:var(--kyoto)"><div class="d">JUL 20</div><div class="t">→ KIX ✈</div><ul><li>Haruka from Kyoto Station</li><li>Bags already at airport</li><li>Flight 22:15</li></ul></div>
+  </div>
+</section>
+
+<footer>
+  Built as a personal trip reference · prices are approximate 2026 estimates, verify at booking · not affiliated with any operator.
+</footer>
+
+</div>
+
+<script>
+function tk(el){el.classList.toggle('done');save()}
+function save(){
+  try{
+    var s=[];document.querySelectorAll('.chk').forEach(function(c,i){if(c.classList.contains('done'))s.push(i)});
+    localStorage.setItem('jp_done',JSON.stringify(s));
+  }catch(e){}
+}
+(function(){
+  try{
+    var s=JSON.parse(localStorage.getItem('jp_done')||'[]');
+    var chks=document.querySelectorAll('.chk');
+    s.forEach(function(i){if(chks[i])chks[i].classList.add('done')});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
