@@ -109,6 +109,11 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 .idxcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
 .idxcard h3{margin-top:0}
 .idxcard .linkbtn{margin:3px 4px 0 0}
+.crawlmap{height:230px;border-radius:10px;overflow:hidden;border:1px solid var(--line);margin:8px 0;background:var(--surface2)}
+.crawlnum{background:transparent !important;border:none !important;box-shadow:none !important;color:#fff;font-weight:700;font-size:10px;padding:0 !important}
+.mchk{width:16px;height:16px;border:1.5px solid var(--faint);border-radius:4px;flex-shrink:0;cursor:pointer;margin-top:1px}
+.mchk.done{background:var(--green);border-color:var(--green)}
+.nok{color:var(--faint);font-size:0.92em;white-space:nowrap}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -118,6 +123,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <span class="brand">🇯🇵 Japan 2026</span>
   <a href="#hub">Links</a>
   <a href="#map">Map</a>
+  <a href="#mustdo">Must-do</a>
   <a href="#essentials">Essentials</a>
   <a href="#konbini">Konbini</a>
   <a href="#money">Money</a>
@@ -146,8 +152,8 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <div class="metrics">
     <div class="metric"><div class="v">18</div><div class="l">days on the ground</div></div>
     <div class="metric"><div class="v">5</div><div class="l">cities · 5 hotels</div></div>
-    <div class="metric"><div class="v">~¥62k</div><div class="l">est. transport / person</div></div>
-    <div class="metric"><div class="v">¥38k</div><div class="l">saved vs nationwide pass</div></div>
+    <div class="metric"><div class="v">~¥62k</div><div class="l">est. transport / person · ≈4,100 kr</div></div>
+    <div class="metric"><div class="v">¥38k</div><div class="l">saved vs nationwide pass · ≈2,500 kr</div></div>
   </div>
 
   <div class="journey">
@@ -172,6 +178,71 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
     <span><span class="ld" style="background:var(--kyoto)"></span>Kyoto</span>
     <span><span class="ld" style="background:#f87171"></span>Day trips</span>
     <span><span class="ld" style="background:#9aa3b0"></span>Airport</span>
+  </div>
+</section>
+
+<!-- ===== MUST-DO ===== -->
+<section id="mustdo">
+  <h2>⭐ Must-do — don't miss these</h2>
+  <p class="lead">The bucket-list essentials for each stop, so nothing slips through. Tap to tick them off as you go (saved in your browser, separate from your packing list).</p>
+
+  <div class="hub">
+
+    <div class="hubcard" style="border-left:3px solid var(--kanazawa)">
+      <h3>🟣 Kanazawa</h3>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Kenroku-en</strong> — one of Japan's 3 great gardens</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Higashi Chaya</strong> geisha district + a teahouse</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Omicho Market</strong> seafood breakfast / kaisendon</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Gold-leaf soft-serve ice cream 🍦</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">21st Century Museum (Leandro Erlich pool)</span></div>
+    </div>
+
+    <div class="hubcard" style="border-left:3px solid var(--nagano)">
+      <h3>🟢 Nagano</h3>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Zenko-ji</strong> at dawn + the pitch-black "key to paradise" tunnel</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Jigokudani snow monkeys</strong> (bathing year-round)</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Oyaki dumplings on the temple approach</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Matsumoto Castle</strong> ("Crow Castle") day trip</span></div>
+    </div>
+
+    <div class="hubcard" style="border-left:3px solid var(--tokyo)">
+      <h3>🩷 Tokyo</h3>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Senso-ji</strong> + Nakamise-dori (Asakusa)</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Shibuya Crossing</strong> + sunset from Shibuya Sky</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>teamLab</strong> digital art</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Golden Gai</strong> tiny-bar night</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Meiji Shrine forest walk</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">A proper sushi / Toyosu breakfast</span></div>
+    </div>
+
+    <div class="hubcard" style="border-left:3px solid var(--osaka)">
+      <h3>🟠 Osaka</h3>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Dotonbori</strong> neon + Glico sign at night</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Street food: takoyaki, okonomiyaki, kushikatsu</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Osaka Castle</strong></span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Shinsekai / Tsutenkaku old-Osaka vibe</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Universal / Super Nintendo World (theme-park fans)</span></div>
+    </div>
+
+    <div class="hubcard" style="border-left:3px solid var(--kyoto)">
+      <h3>🔵 Kyoto</h3>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Fushimi Inari</strong> 1,000 torii at sunrise</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Kinkaku-ji</strong> golden pavilion</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Arashiyama</strong> bamboo grove (early)</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Gion</strong> at dusk — spot a geiko</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Kiyomizu-dera + Higashiyama lanes</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Matcha sweets &amp; a kaiseki dinner</span></div>
+    </div>
+
+    <div class="hubcard" style="border-left:3px solid #f87171">
+      <h3>🔴 Hiroshima &amp; 🦌 Nara (day trips)</h3>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Peace Memorial Park, Museum &amp; A-Bomb Dome</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Miyajima</strong> floating torii + deer</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Hiroshima-style okonomiyaki</span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Feed the bowing deer in <strong>Nara Park</strong></span></div>
+      <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Todai-ji</strong> Great Buddha</span></div>
+    </div>
+
   </div>
 </section>
 
@@ -340,7 +411,9 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 <!-- ===== MONEY ===== -->
 <section id="money">
   <h2>💴 Money &amp; budget</h2>
-  <p class="lead">Japan is still surprisingly cash-friendly — many small restaurants, shrines, and lockers are cash-only. Carry ¥10,000–20,000 on you and top up as you go.</p>
+  <p class="lead">Japan is still surprisingly cash-friendly — many small restaurants, shrines, and lockers are cash-only. Carry ¥10,000–20,000 <span class="nok">(≈700–1,300 kr)</span> on you and top up as you go.</p>
+
+  <div class="tip">💱 <strong>NOK conversions</strong> shown throughout use <strong>≈¥15 = 1 kr</strong> (mid-2025 ballpark — the yen has been weak, great for you). Check the live rate: <a href="https://www.google.com/search?q=JPY+to+NOK" target="_blank">JPY → NOK</a>.</div>
 
   <div class="grid2">
     <div class="card accent-green">
@@ -350,7 +423,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
     </div>
     <div class="card accent-blue">
       <h3>🛍️ Tax-free shopping</h3>
-      <p>Spend <strong>¥5,000+ in one store in one day</strong> and claim ~10% tax-free at the counter — bring your <strong>passport</strong>. Great for the electronics (Yodobashi) and fabric/craft hauls. Goods are sealed; don't open until you leave Japan. Keep receipts for the customs check on departure.</p>
+      <p>Spend <strong>¥5,000+ <span class="nok">(≈330 kr)</span> in one store in one day</strong> and claim ~10% tax-free at the counter — bring your <strong>passport</strong>. Great for the electronics (Yodobashi) and fabric/craft hauls. Goods are sealed; don't open until you leave Japan. Keep receipts for the customs check on departure.</p>
     </div>
   </div>
 
@@ -358,13 +431,13 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
     <h3>Rough daily budget · per person</h3>
     <table>
       <tr><th>Category</th><th>Comfortable / day</th><th>Notes</th></tr>
-      <tr><td>Food (3 meals + snacks)</td><td>¥4,000–7,000</td><td>Konbini breakfast keeps it low; nice dinners push it up</td></tr>
-      <tr><td>Local transport</td><td>¥800–1,500</td><td>Off the rail passes; IC card taps</td></tr>
-      <tr><td>Sights / entries</td><td>¥1,500–3,500</td><td>Temples ¥300–600; teamLab/aquarium higher</td></tr>
-      <tr><td>Lodging</td><td>~¥9,000</td><td>Mid-range, already booked</td></tr>
-      <tr class="total"><td>Daily total</td><td>~¥15,000–21,000</td><td>≈ excl. shopping &amp; long-distance rail</td></tr>
+      <tr><td>Food (3 meals + snacks)</td><td>¥4,000–7,000 <span class="nok">(≈270–470 kr)</span></td><td>Konbini breakfast keeps it low; nice dinners push it up</td></tr>
+      <tr><td>Local transport</td><td>¥800–1,500 <span class="nok">(≈55–100 kr)</span></td><td>Off the rail passes; IC card taps</td></tr>
+      <tr><td>Sights / entries</td><td>¥1,500–3,500 <span class="nok">(≈100–235 kr)</span></td><td>Temples ¥300–600 (≈20–40 kr); teamLab/aquarium higher</td></tr>
+      <tr><td>Lodging</td><td>~¥9,000 <span class="nok">(≈600 kr)</span></td><td>Mid-range, already booked</td></tr>
+      <tr class="total"><td>Daily total</td><td>~¥15,000–21,000 <span class="nok">(≈1,000–1,400 kr)</span></td><td>≈ excl. shopping &amp; long-distance rail</td></tr>
     </table>
-    <div class="tip">18 days ≈ <strong>¥280,000–380,000 / person</strong> on the ground, plus ~¥62k rail and your flights/hotels. Set aside a separate shopping budget — the electronics + fabric runs add up fast.</div>
+    <div class="tip">18 days ≈ <strong>¥280,000–380,000 / person</strong> <span class="nok">(≈18,700–25,300 kr)</span> on the ground, plus ~¥62k <span class="nok">(≈4,100 kr)</span> rail and your flights/hotels. Set aside a separate shopping budget — the electronics + fabric runs add up fast.</div>
   </div>
 </section>
 
@@ -376,11 +449,11 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <div class="grid2">
     <div class="card accent-green">
       <h3>📱 eSIM <span class="badge b-green">easiest</span></h3>
-      <p>Buy from <a href="https://www.airalo.com/japan-esim" target="_blank">Airalo</a> or <a href="https://www.ubigi.com/" target="_blank">Ubigi</a> before departure, install over WiFi, and it activates on landing — no queue at the airport. ~¥1,500–3,000 each for 10–20 GB. One per phone.</p>
+      <p>Buy from <a href="https://www.airalo.com/japan-esim" target="_blank">Airalo</a> or <a href="https://www.ubigi.com/" target="_blank">Ubigi</a> before departure, install over WiFi, and it activates on landing — no queue at the airport. ~¥1,500–3,000 <span class="nok">(≈100–200 kr)</span> each for 10–20 GB. One per phone.</p>
     </div>
     <div class="card accent-blue">
       <h3>📡 Pocket WiFi <span class="badge b-blue">shared</span></h3>
-      <p>One device covers both phones + tablet, unlimited data, ~¥600–900/day. Pick up at KIX arrivals, drop in a return envelope at any post box on the way out. Best if you'll tether laptops or stream a lot.</p>
+      <p>One device covers both phones + tablet, unlimited data, ~¥600–900/day <span class="nok">(≈40–60 kr)</span>. Pick up at KIX arrivals, drop in a return envelope at any post box on the way out. Best if you'll tether laptops or stream a lot.</p>
     </div>
   </div>
 
@@ -392,24 +465,24 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <h2>🎫 JR pass strategy</h2>
   <p class="lead">Your big legs are spread across 18 days, so an all-you-can-ride nationwide pass is poor value. Mix individual tickets with one regional pass instead.</p>
 
-  <div class="win"><strong>Bottom line:</strong> Skip the ~¥100,000 nationwide pass. Individual tickets for the north + a Kansai-Hiroshima Area Pass for the west ≈ ¥62,000/person. All figures approximate 2026 — verify at booking.</div>
+  <div class="win"><strong>Bottom line:</strong> Skip the ~¥100,000 <span class="nok">(≈6,700 kr)</span> nationwide pass. Individual tickets for the north + a Kansai-Hiroshima Area Pass for the west ≈ ¥62,000/person <span class="nok">(≈4,100 kr)</span>. All figures approximate 2026 — verify at booking.</div>
 
   <div class="grid2">
     <div class="card accent-green">
       <h3>✅ Recommended plan <span class="badge b-green">~¥62k</span></h3>
       <table>
         <tr><th>Component</th><th>≈ / person</th></tr>
-        <tr><td>3 Hokuriku legs (individual)</td><td>¥26,500</td></tr>
-        <tr><td>Tokyo → Osaka (Hikari)</td><td>¥14,000</td></tr>
-        <tr><td>Kansai-Hiroshima Pass (5d)</td><td>~¥18,000</td></tr>
-        <tr><td>Kyoto → KIX (Haruka)</td><td>¥3,600</td></tr>
-        <tr class="total"><td>Total</td><td>~¥62,000</td></tr>
+        <tr><td>3 Hokuriku legs (individual)</td><td>¥26,500 <span class="nok">(≈1,770 kr)</span></td></tr>
+        <tr><td>Tokyo → Osaka (Hikari)</td><td>¥14,000 <span class="nok">(≈930 kr)</span></td></tr>
+        <tr><td>Kansai-Hiroshima Pass (5d)</td><td>~¥18,000 <span class="nok">(≈1,200 kr)</span></td></tr>
+        <tr><td>Kyoto → KIX (Haruka)</td><td>¥3,600 <span class="nok">(≈240 kr)</span></td></tr>
+        <tr class="total"><td>Total</td><td>~¥62,000 <span class="nok">(≈4,100 kr)</span></td></tr>
       </table>
     </div>
     <div class="card accent-red">
       <h3>❌ Nationwide JR Pass <span class="badge b-red">avoid</span></h3>
-      <p>21-day pass ≈ <strong>¥100,000</strong>. Even buying every ticket individually (~¥64,700) beats it by ~¥35,000. Built for people criss-crossing the country in one week — not your pace.</p>
-      <p style="margin-top:8px">The <strong>Hokuriku Arch Pass</strong> (¥35,000 since Mar 2026) also loses to individual tickets here because you travel that route one-way, not round-trip.</p>
+      <p>21-day pass ≈ <strong>¥100,000 <span class="nok">(≈6,700 kr)</span></strong>. Even buying every ticket individually (~¥64,700, ≈4,300 kr) beats it by ~¥35,000 <span class="nok">(≈2,330 kr)</span>. Built for people criss-crossing the country in one week — not your pace.</p>
+      <p style="margin-top:8px">The <strong>Hokuriku Arch Pass</strong> (¥35,000 <span class="nok">(≈2,330 kr)</span> since Mar 2026) also loses to individual tickets here because you travel that route one-way, not round-trip.</p>
     </div>
   </div>
 
@@ -426,22 +499,22 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 
   <div class="card accent-green">
     <h3>IC card — get this first</h3>
-    <p><strong>Easiest:</strong> add Suica or ICOCA to your phone wallet (especially iPhone) — no queue, no deposit, top up with your card. <strong>Physical:</strong> grab an ICOCA at KIX on arrival. Works on metros, buses, local trains, konbini, and vending machines nationwide. Start with ¥3,000–5,000 loaded.</p>
+    <p><strong>Easiest:</strong> add Suica or ICOCA to your phone wallet (especially iPhone) — no queue, no deposit, top up with your card. <strong>Physical:</strong> grab an ICOCA at KIX on arrival. Works on metros, buses, local trains, konbini, and vending machines nationwide. Start with ¥3,000–5,000 <span class="nok">(≈200–330 kr)</span> loaded.</p>
   </div>
 
   <div class="grid2">
-    <div class="card"><h3>🟣 Kanazawa</h3><p>Buy the <strong>Loop Bus day pass (~¥600)</strong> — hits every sight, saves your legs. From the East Gate bus terminal.</p></div>
+    <div class="card"><h3>🟣 Kanazawa</h3><p>Buy the <strong>Loop Bus day pass (~¥600, ≈40 kr)</strong> — hits every sight, saves your legs. From the East Gate bus terminal.</p></div>
     <div class="card"><h3>🟢 Nagano</h3><p>Just tap your IC card. Bus line 1 to Zenkoji; trains to Matsumoto. No pass needed.</p></div>
-    <div class="card"><h3>🩷 Tokyo</h3><p><strong>Tokyo Subway Ticket</strong> (24h ¥800 / 48h ¥1,200 / 72h ¥1,500) for metro days. IC card for JR Yamanote hops.</p></div>
-    <div class="card"><h3>🟠 Osaka</h3><p>Mostly walkable from your hotel. IC card for the subway. <strong>Osaka Amazing Pass</strong> (~¥3,300) only if you cram a big sightseeing day.</p></div>
-    <div class="card accent-amber"><h3>🔵 Kyoto</h3><p>The ¥700 bus day pass was <strong>scrapped in 2024</strong>. Tap your IC card on buses, or get the subway+bus pass (~¥1,100). <strong>Taxi between far temples</strong> — cheap and easy on the legs.</p></div>
+    <div class="card"><h3>🩷 Tokyo</h3><p><strong>Tokyo Subway Ticket</strong> (24h ¥800 / 48h ¥1,200 / 72h ¥1,500 · ≈55/80/100 kr) for metro days. IC card for JR Yamanote hops.</p></div>
+    <div class="card"><h3>🟠 Osaka</h3><p>Mostly walkable from your hotel. IC card for the subway. <strong>Osaka Amazing Pass</strong> (~¥3,300, ≈220 kr) only if you cram a big sightseeing day.</p></div>
+    <div class="card accent-amber"><h3>🔵 Kyoto</h3><p>The ¥700 bus day pass was <strong>scrapped in 2024</strong>. Tap your IC card on buses, or get the subway+bus pass (~¥1,100, ≈75 kr). <strong>Taxi between far temples</strong> — cheap and easy on the legs.</p></div>
   </div>
 </section>
 
 <!-- ===== BAGGAGE ===== -->
 <section id="baggage">
   <h2>🧳 Baggage forwarding</h2>
-  <p class="lead">Takuhaibin (Yamato "Kuroneko"): ~¥2,000–2,500 per suitcase per hop, next-day hotel-to-hotel. The biggest comfort upgrade of the trip.</p>
+  <p class="lead">Takuhaibin (Yamato "Kuroneko"): ~¥2,000–2,500 <span class="nok">(≈135–165 kr)</span> per suitcase per hop, next-day hotel-to-hotel. The biggest comfort upgrade of the trip.</p>
 
   <div class="card">
     <table>
@@ -472,7 +545,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
       <tr><td>Osaka → Kyoto</td><td>JR rapid</td><td>~28m</td><td>every 10–15m</td></tr>
       <tr><td>Kyoto → KIX</td><td>Haruka</td><td>~75m</td><td>every 30m</td></tr>
     </table>
-    <div class="warn">⚠ The parents → Seoul (Jul 17): Nankai Rapi:t, Namba → KIX, ~40m, ~¥1,430. Not on any JR pass.</div>
+    <div class="warn">⚠ The parents → Seoul (Jul 17): Nankai Rapi:t, Namba → KIX, ~40m, ~¥1,430 <span class="nok">(≈95 kr)</span>. Not on any JR pass.</div>
   </div>
 </section>
 
@@ -483,7 +556,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 
   <div class="card accent-green">
     <h3>Suntory Yamazaki Distillery <span class="badge b-amber">book ASAP · lottery</span></h3>
-    <p>Birthplace of Japanese whisky, maker of Yamazaki single malt. Real mash tuns, washbacks, pot stills and ageing warehouses. <strong>On your Osaka–Kyoto line</strong> — 10 min walk from JR Yamazaki Station (covered by your pass). Craftsmanship Tour: 80 min, ¥3,000, exclusive tastings. Museum + tasting lounge as the backup if tours sell out. English available, 20+ only.</p>
+    <p>Birthplace of Japanese whisky, maker of Yamazaki single malt. Real mash tuns, washbacks, pot stills and ageing warehouses. <strong>On your Osaka–Kyoto line</strong> — 10 min walk from JR Yamazaki Station (covered by your pass). Craftsmanship Tour: 80 min, ¥3,000 <span class="nok">(≈200 kr)</span>, exclusive tastings. Museum + tasting lounge as the backup if tours sell out. English available, 20+ only.</p>
     <div class="tip">Best slot: a half-day from Kyoto (Jul 18/19), or a stop on the Jul 17 move. Tours run on a monthly lottery — enter the instant July opens.</div>
     <a class="linkbtn" href="https://www.suntory.com/factory/yamazaki/" target="_blank">→ Book</a>
     <a class="linkbtn" href="https://www.google.com/maps/search/Suntory+Yamazaki+Distillery" target="_blank">→ Maps</a>
@@ -492,13 +565,13 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <div class="grid2">
     <div class="card accent-blue">
       <h3>Asahi Suita Factory <span class="badge b-blue">Osaka</span></h3>
-      <p>Birthplace of Asahi, recently rebuilt with projection mapping, a VR "dive into the fermentation tank," and a Super Dry ride — then fresh Super Dry tastings. ~¥1,000, ~1h. 10 min from Suita Station (on your pass). Reserve online.</p>
+      <p>Birthplace of Asahi, recently rebuilt with projection mapping, a VR "dive into the fermentation tank," and a Super Dry ride — then fresh Super Dry tastings. ~¥1,000 <span class="nok">(≈67 kr)</span>, ~1h. 10 min from Suita Station (on your pass). Reserve online.</p>
       <a class="linkbtn" href="https://www.asahibeer.co.jp/brewery/suita/" target="_blank">→ Book</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Asahi+Beer+Suita+Factory" target="_blank">→ Maps</a>
     </div>
     <div class="card accent-blue">
       <h3>Gekkeikan + Fushimi <span class="badge b-blue">Kyoto · Jul 18</span></h3>
-      <p>World's leading sake producer; Meiji-era working brewery in Fushimi, Kyoto's sake quarter (Gekkeikan, Kizakura &amp; more). ~¥600 with tastings + a bottle gift. <strong>Same area as Fushimi Inari</strong> — shrine at sunrise, sake by late morning.</p>
+      <p>World's leading sake producer; Meiji-era working brewery in Fushimi, Kyoto's sake quarter (Gekkeikan, Kizakura &amp; more). ~¥600 <span class="nok">(≈40 kr)</span> with tastings + a bottle gift. <strong>Same area as Fushimi Inari</strong> — shrine at sunrise, sake by late morning.</p>
       <a class="linkbtn" href="https://www.google.com/maps/search/Gekkeikan+Okura+Sake+Museum+Fushimi" target="_blank">→ Maps</a>
     </div>
     <div class="card accent-blue">
@@ -537,7 +610,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <h2>🍸 Cocktail &amp; whisky bars</h2>
   <p class="lead">Japan makes some of the world's best cocktails — precise, quiet, ice carved by hand. Below are standout bars plus a ready-made <strong>bar-to-bar crawl</strong> for each city. Many seat &lt;10 people; arrive early or book. Expect a small seating/snack charge (otōshi).</p>
 
-  <div class="win"><strong>Etiquette:</strong> at high-end bars keep it low-key — no big groups shouting. A cover charge of ¥500–1,500 is normal. Cash is safest. "Omakase" lets the bartender build to your taste.</div>
+  <div class="win"><strong>Etiquette:</strong> at high-end bars keep it low-key — no big groups shouting. A cover charge of ¥500–1,500 <span class="nok">(≈35–100 kr)</span> is normal. Cash is safest. "Omakase" lets the bartender build to your taste.</div>
 
   <div class="grid2">
 
@@ -552,6 +625,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>New York Bar</strong> (Park Hyatt 52F) — skyline + jazz, the <em>Lost in Translation</em> bar</li>
       </ul>
       <div class="tip">🍶 <strong>Crawl:</strong> start in <strong>Golden Gai</strong> (200+ tiny themed bars) → snack-stalls of <strong>Omoide Yokocho</strong> → finish with whisky at <strong>Zoetrope</strong>. Upscale version: High Five → Star Bar → a nightcap in Ginza.</div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Shinjuku+Golden+Gai&amp;waypoints=Omoide+Yokocho+Shinjuku&amp;destination=Zoetrope+whisky+bar+Shinjuku&amp;travelmode=walking" target="_blank">🗺️ Walking route</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/best+cocktail+bars+Ginza+Tokyo" target="_blank">⭐ Ginza bars</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Golden+Gai+Shinjuku" target="_blank">🍶 Golden Gai</a>
     </div>
@@ -565,6 +639,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Samboa Bar</strong> — crisp highballs, going since 1918</li>
       </ul>
       <div class="tip">🍶 <strong>Crawl:</strong> street drinks &amp; kushikatsu around <strong>Dotonbori/Namba</strong> → the standing bars &amp; izakaya of <strong>Ura-Namba</strong> → upscale nightcap in <strong>Kitashinchi</strong>.</div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Dotonbori+Osaka&amp;waypoints=Ura+Namba+Osaka&amp;destination=Kitashinchi+Osaka&amp;travelmode=walking" target="_blank">🗺️ Walking route</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/best+bars+Kitashinchi+Osaka" target="_blank">⭐ Kitashinchi</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Ura+Namba+bars+Osaka" target="_blank">🍶 Ura-Namba</a>
     </div>
@@ -578,6 +653,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Bee's Knees</strong> — speakeasy-style cocktails</li>
       </ul>
       <div class="tip">🍶 <strong>Crawl:</strong> riverside lantern alley of <strong>Pontocho</strong> (sake &amp; small plates) → bars along <strong>Kiyamachi</strong> canal → finish with a craft cocktail at Rocking Chair.</div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Pontocho+Kyoto&amp;waypoints=Kiyamachi+Street+Kyoto&amp;destination=Bar+Rocking+Chair+Kyoto&amp;travelmode=walking" target="_blank">🗺️ Walking route</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Pontocho+alley+Kyoto" target="_blank">🍶 Pontocho</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/best+cocktail+bars+Kyoto" target="_blank">⭐ Top bars</a>
     </div>
@@ -590,13 +666,14 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li>Atmospheric bars in the preserved <strong>Higashi Chaya</strong> teahouse district</li>
       </ul>
       <div class="tip">🍶 <strong>Crawl:</strong> early sake tasting at Fukumitsuya → izakaya dinner in Katamachi → late cocktails in Korinbo.</div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Fukumitsuya+Sake+Kanazawa&amp;waypoints=Katamachi+Kanazawa&amp;destination=Korinbo+Kanazawa&amp;travelmode=walking" target="_blank">🗺️ Walking route</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/best+bars+Katamachi+Kanazawa" target="_blank">⭐ Katamachi</a>
     </div>
 
   </div>
 
   <h3 style="font-size:18px;margin-top:1.6rem">🍷🍺🥃 Bar-to-bar crawls by drink</h3>
-  <p class="lead">Pick your poison and follow the route — each is a tight, walkable cluster with the stops in order. Reserve the tiny ones; most are cash-friendly.</p>
+  <p class="lead">Pick your poison and follow the route — each has a <strong>mini route map</strong> (green ● = where to start, numbered stops, dashed walking path) and a one-tap <strong>🗺️ Walking route</strong> button that opens turn-by-turn directions in Google Maps. Reserve the tiny ones; most are cash-friendly.</p>
 
   <div class="grid2">
 
@@ -608,6 +685,8 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Winestand Waltz</strong> (Ebisu) — standing wine, by-the-glass flights</li>
         <li><strong>Shidax-area &amp; Nakameguro</strong> riverside wine bars to finish</li>
       </ol>
+      <div class="crawlmap" id="cm-wine"></div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Ahiru+Store+Tomigaya+Tokyo&amp;waypoints=Winestand+Waltz+Ebisu&amp;destination=Nakameguro+Station+Tokyo&amp;travelmode=walking" target="_blank">🗺️ Walking route (start ●)</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Ahiru+Store+Tomigaya+Tokyo" target="_blank">→ Ahiru Store</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Winestand+Waltz+Ebisu" target="_blank">→ Waltz</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/natural+wine+bar+Nakameguro" target="_blank">→ Nakameguro</a>
@@ -622,6 +701,8 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Baird Beer</strong> Taproom (Harajuku) — your itinerary stop</li>
         <li>Detour: <strong>Popeye</strong> (Ryogoku) — 70 taps, legendary</li>
       </ol>
+      <div class="crawlmap" id="cm-beertokyo"></div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Mikkeller+Tokyo+Shibuya&amp;waypoints=Goodbeer+Faucets+Shibuya&amp;destination=Baird+Beer+Taproom+Harajuku&amp;travelmode=walking" target="_blank">🗺️ Walking route (start ●)</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Mikkeller+Tokyo+Shibuya" target="_blank">→ Mikkeller</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Goodbeer+Faucets+Shibuya" target="_blank">→ Goodbeer</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Popeye+beer+Ryogoku" target="_blank">→ Popeye</a>
@@ -634,6 +715,8 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Craft Beer Base</strong> / <strong>Yellow Ape Craft</strong> (Osaka)</li>
         <li><strong>Kyoto Beer Lab</strong> &amp; <strong>Spring Valley</strong> (Kyoto)</li>
       </ol>
+      <div class="crawlmap" id="cm-beerosaka"></div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Namba+Station+Osaka&amp;waypoints=Yellow+Ape+Craft+Osaka&amp;destination=Shinsaibashi+Osaka&amp;travelmode=walking" target="_blank">🗺️ Walking route (start ●)</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Beer+Belly+Osaka" target="_blank">→ Beer Belly</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/craft+beer+bar+Osaka" target="_blank">→ Osaka taps</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Kyoto+Beer+Lab" target="_blank">→ Kyoto Beer Lab</a>
@@ -647,6 +730,8 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Sake Bar Yoramu</strong> (Kyoto) — rare aged sake</li>
         <li><strong>Fushimi</strong> tasting rooms (Kyoto's sake district)</li>
       </ol>
+      <div class="crawlmap" id="cm-sake"></div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Pontocho+Kyoto&amp;waypoints=Kiyamachi+Street+Kyoto&amp;destination=Sake+Bar+Yoramu+Kyoto&amp;travelmode=walking" target="_blank">🗺️ Walking route (Kyoto, start ●)</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Kurand+Sake+Market+Tokyo" target="_blank">→ Kurand</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Sake+Bar+Yoramu+Kyoto" target="_blank">→ Yoramu</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/sake+bar+Pontocho+Kyoto" target="_blank">→ Pontocho</a>
@@ -659,6 +744,8 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Campbelltoun Loch</strong> (Shimbashi) — tiny Scotch shrine</li>
         <li>Osaka: <strong>Bar K</strong> &amp; <strong>Augusta Tarlogie</strong></li>
       </ol>
+      <div class="crawlmap" id="cm-whisky"></div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Zoetrope+whisky+bar+Shinjuku&amp;waypoints=Golden+Gai+Shinjuku&amp;destination=Shinjuku-sanchome+Station&amp;travelmode=walking" target="_blank">🗺️ Walking route (Tokyo, start ●)</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Zoetrope+whisky+bar+Shinjuku" target="_blank">→ Zoetrope</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Campbelltoun+Loch+Shimbashi" target="_blank">→ Campbelltoun</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Bar+K+whisky+Osaka" target="_blank">→ Bar K</a>
@@ -671,6 +758,8 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
         <li><strong>Benfiddich</strong> (Nishi-Shinjuku) — foraged botanicals</li>
         <li>Gin: <strong>Nokishita711</strong> (Kyoto) — Ki No Bi flights</li>
       </ol>
+      <div class="crawlmap" id="cm-cocktail"></div>
+      <a class="linkbtn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Bar+High+Five+Ginza&amp;waypoints=Star+Bar+Ginza&amp;destination=Bar+Lupin+Ginza&amp;travelmode=walking" target="_blank">🗺️ Walking route (start ●)</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Bar+High+Five+Ginza" target="_blank">→ High Five</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Bar+Benfiddich+Shinjuku" target="_blank">→ Benfiddich</a>
       <a class="linkbtn" href="https://www.google.com/maps/search/Nokishita711+Kyoto" target="_blank">→ Nokishita711</a>
@@ -1086,7 +1175,55 @@ function save(){
   });
   map.fitBounds(bounds,{padding:[45,45]});
   setTimeout(function(){map.invalidateSize();},300);
+
+  // ----- Bar-to-bar crawl route maps -----
+  var CRAWLS=[
+    {id:'cm-wine',color:'#f87171',stops:[
+      {n:'1 · Ahiru Store (START)',ll:[35.6684,139.6886]},
+      {n:'2 · Winestand Waltz',ll:[35.6463,139.7106]},
+      {n:'3 · Nakameguro wine bars',ll:[35.6437,139.6989]}]},
+    {id:'cm-beertokyo',color:'#fbbf24',stops:[
+      {n:'1 · Mikkeller Tokyo (START)',ll:[35.6573,139.6962]},
+      {n:'2 · Goodbeer Faucets',ll:[35.6550,139.6985]},
+      {n:'3 · Baird Beer Harajuku',ll:[35.6693,139.7060]}]},
+    {id:'cm-beerosaka',color:'#fbbf24',stops:[
+      {n:'1 · Namba (START)',ll:[34.6627,135.5028]},
+      {n:'2 · Yellow Ape Craft',ll:[34.6722,135.4996]},
+      {n:'3 · Shinsaibashi taps',ll:[34.6735,135.5010]}]},
+    {id:'cm-sake',color:'#34d399',stops:[
+      {n:'1 · Pontocho (START)',ll:[35.0045,135.7708]},
+      {n:'2 · Kiyamachi canal',ll:[35.0030,135.7700]},
+      {n:'3 · Sake Bar Yoramu',ll:[35.0128,135.7640]}]},
+    {id:'cm-whisky',color:'#60a5fa',stops:[
+      {n:'1 · Zoetrope (START)',ll:[35.6940,139.7010]},
+      {n:'2 · Golden Gai',ll:[35.6939,139.7046]},
+      {n:'3 · Shinjuku-sanchome',ll:[35.6920,139.7050]}]},
+    {id:'cm-cocktail',color:'#a78bfa',stops:[
+      {n:'1 · Bar High Five (START)',ll:[35.6719,139.7637]},
+      {n:'2 · Star Bar Ginza',ll:[35.6712,139.7646]},
+      {n:'3 · Bar Lupin',ll:[35.6705,139.7652]}]}
+  ];
+  CRAWLS.forEach(function(c){
+    var el=document.getElementById(c.id); if(!el) return;
+    var m=L.map(c.id,{scrollWheelZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(m);
+    var pts=[];
+    c.stops.forEach(function(s,i){
+      var start=(i===0);
+      var mk=L.circleMarker(s.ll,{radius:start?12:9,color:'#0f1115',weight:2,fillColor:start?'#22c55e':c.color,fillOpacity:1}).addTo(m);
+      mk.bindPopup('<b>'+s.n+'</b>');
+      mk.bindTooltip(String(i+1),{permanent:true,direction:'center',className:'crawlnum'});
+      pts.push(s.ll);
+    });
+    L.polyline(pts,{color:c.color,weight:3,opacity:0.85,dashArray:'6,7'}).addTo(m);
+    m.fitBounds(pts,{padding:[35,35]});
+    setTimeout(function(){m.invalidateSize();},350);
+  });
 })();
+
+// ----- Must-do bucket-list checkboxes (separate storage) -----
+function tk2(el){el.classList.toggle('done');try{var s=[];document.querySelectorAll('.mchk').forEach(function(c,i){if(c.classList.contains('done'))s.push(i)});localStorage.setItem('jp_must',JSON.stringify(s));}catch(e){}}
+(function(){try{var s=JSON.parse(localStorage.getItem('jp_must')||'[]');var c=document.querySelectorAll('.mchk');s.forEach(function(i){if(c[i])c[i].classList.add('done')});}catch(e){}})();
 </script>
 </body>
 </html>
