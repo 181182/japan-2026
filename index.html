@@ -104,14 +104,22 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin:0.6rem 0 0}
 .legend span{display:flex;align-items:center;gap:5px}
 .ld{width:9px;height:9px;border-radius:50%}
+#tripmap{height:460px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.leaflet-popup-content{font-family:system-ui,sans-serif;font-size:13px}
+.idxcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
+.idxcard h3{margin-top:0}
+.idxcard .linkbtn{margin:3px 4px 0 0}
 </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
 
 <nav><div class="inner">
   <span class="brand">🇯🇵 Japan 2026</span>
   <a href="#hub">Links</a>
+  <a href="#map">Map</a>
   <a href="#essentials">Essentials</a>
+  <a href="#konbini">Konbini</a>
   <a href="#money">Money</a>
   <a href="#connect">Connect</a>
   <a href="#passes">Passes</a>
@@ -125,6 +133,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <a href="#plans">Day plans</a>
   <a href="#days">Day-by-day</a>
   <a href="#packing">Packing</a>
+  <a href="#index">All links</a>
 </div></nav>
 
 <div class="wrap">
@@ -149,6 +158,22 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
     <div class="leg"><div class="city"><span class="dot" style="background:var(--kyoto)"></span>Kyoto</div><div class="when">Jul 17 – 20</div><div class="nights">3 nights</div><div class="hotel">🏨 Kyoto Century Hotel</div></div>
   </div>
 </header>
+
+<!-- ===== MAP ===== -->
+<section id="map">
+  <h2>🗺️ Interactive trip map</h2>
+  <p class="lead">Your whole route at a glance — pan, zoom, and tap any marker for dates, hotel, and a one-tap Maps link. Colours match each city.</p>
+  <div id="tripmap"></div>
+  <div class="legend">
+    <span><span class="ld" style="background:var(--kanazawa)"></span>Kanazawa</span>
+    <span><span class="ld" style="background:var(--nagano)"></span>Nagano</span>
+    <span><span class="ld" style="background:var(--tokyo)"></span>Tokyo</span>
+    <span><span class="ld" style="background:var(--osaka)"></span>Osaka</span>
+    <span><span class="ld" style="background:var(--kyoto)"></span>Kyoto</span>
+    <span><span class="ld" style="background:#f87171"></span>Day trips</span>
+    <span><span class="ld" style="background:#9aa3b0"></span>Airport</span>
+  </div>
+</section>
 
 <!-- ===== LINKS HUB ===== -->
 <section id="hub">
@@ -176,11 +201,11 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 
     <div class="hubcard">
       <h3>🏨 Hotels (all confirmed)</h3>
-      <div class="hubrow"><span class="label">Hotel Torifito Kanazawa</span><span class="sub">Jul 2–4</span></div>
-      <div class="hubrow"><span class="label">JAL City Nagano</span><span class="sub">Jul 4–7</span></div>
-      <div class="hubrow"><span class="label">Sunroute Stellar Ueno</span><span class="sub">Jul 7–12</span></div>
-      <div class="hubrow"><span class="label">Bridge Hotel Shinsaibashi</span><span class="sub">Jul 12–17</span></div>
-      <div class="hubrow"><span class="label">Kyoto Century Hotel</span><span class="sub">Jul 17–20</span></div>
+      <div class="hubrow"><span class="label"><a href="https://www.google.com/maps/search/Hotel+Torifito+Kanazawa" target="_blank">Hotel Torifito Kanazawa</a></span><span class="sub">Jul 2–4</span></div>
+      <div class="hubrow"><span class="label"><a href="https://www.google.com/maps/search/Hotel+JAL+City+Nagano" target="_blank">JAL City Nagano</a></span><span class="sub">Jul 4–7</span></div>
+      <div class="hubrow"><span class="label"><a href="https://www.google.com/maps/search/Sunroute+Stellar+Ueno+Tokyo" target="_blank">Sunroute Stellar Ueno</a></span><span class="sub">Jul 7–12</span></div>
+      <div class="hubrow"><span class="label"><a href="https://www.google.com/maps/search/Bridge+Hotel+Shinsaibashi+Osaka" target="_blank">Bridge Hotel Shinsaibashi</a></span><span class="sub">Jul 12–17</span></div>
+      <div class="hubrow"><span class="label"><a href="https://www.google.com/maps/search/Kyoto+Century+Hotel" target="_blank">Kyoto Century Hotel</a></span><span class="sub">Jul 17–20</span></div>
       <div style="margin-top:8px"><a class="linkbtn" href="https://secure.booking.com/mytrips.html" target="_blank">→ Booking.com My Trips</a></div>
     </div>
 
@@ -232,6 +257,84 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
     <h3>📲 Must-have apps</h3>
     <p><strong>Google Maps</strong> (transit is superb) · <strong>Japan Travel by NAVITIME</strong> (train routing + platform numbers) · <strong>Google Translate</strong> (download Japanese offline + camera mode for menus) · <strong>Booking.com</strong> (your hotels) · your <strong>airline app</strong>. Set Maps offline-area downloads for each city before you go.</p>
   </div>
+</section>
+
+<!-- ===== KONBINI ===== -->
+<section id="konbini">
+  <h2>🏪 Convenience-store checklist</h2>
+  <p class="lead">7-Eleven, FamilyMart &amp; Lawson are everywhere and open 24/7 — your pit stop for any situation. Tap to tick off. Note: konbini sell foods &amp; drinks but <strong>not real medicine</strong> — for those, look for a ドラッグストア (drugstore: Matsumoto Kiyoshi, Sundrug).</p>
+
+  <div class="hub">
+
+    <div class="hubcard">
+      <h3>🛡️ Run-down / immune boost</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>C1000</strong> / <strong>Oronamin C</strong> — vitamin-C shot drinks</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Yakult / R-1</strong> probiotic yogurt drinks</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Umeboshi (pickled plum) — alkalizing pick-me-up</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Hot ginger / honey-lemon drink</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Vitamin jelly pouch (Weider in-jelly)</span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🍻 Hangover kit</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Ukon no Chikara</strong> — turmeric shot, <em>drink before drinking</em></span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Hepalyse W</strong> — liver-support drink</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Pocari Sweat / OS-1</strong> — rehydrate</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Miso soup / umeboshi onigiri the morning after</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Solmack (stomach) — at drugstores</span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🥵 July heat &amp; hydration</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Pocari Sweat / Aquarius</strong> — electrolytes</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Salt candy / 塩タブレット (salt tablets)</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Biore / Gatsby cooling sheets</strong> — icy body wipes</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Hiyahiya cooling gel / neck cooler</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Frozen drink (buy semi-frozen, melts as you walk)</span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>⚡ Energy &amp; jet lag</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Lipovitan D</strong> / Red Bull / Monster</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Drip coffee / canned Boss coffee</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Banana, onigiri — quick fuel</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">SOYJOY / Calorie Mate bars</span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🤢 Upset stomach / tummy</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>OS-1</strong> oral rehydration</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Plain okayu (rice porridge) pouch</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Seirogan / Solmack — drugstore stomach meds</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Bottled green tea / water</span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>😴 Sleep &amp; recovery</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Megurhythm</strong> steam eye mask — amazing after a long day</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Chamomile / mugicha (barley tea)</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Earplugs / eye mask</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Foot-cooling / relax sheets (Kyusoku Jikan)</span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🤧 Cold, allergy &amp; pain</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Face masks (everywhere, cheap)</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Pocket tissues / wet wipes</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Pabron</strong> (cold), <strong>Eve</strong>/<strong>Loxonin</strong> (pain) — drugstore</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Throat lozenges (Nodonu Ame)</span></div>
+    </div>
+
+    <div class="hubcard">
+      <h3>🍱 Anytime meals &amp; misc</h3>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Onigiri, sandwiches, oden, nikuman</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Hot fried chicken (FamiChiki / L-Chiki)</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Umbrella, phone charger, socks</span></div>
+      <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label">Cash (foreign-card ATM inside)</span></div>
+    </div>
+
+  </div>
+  <div class="tip">🏪 <strong>Brand picks:</strong> Lawson for fried chicken &amp; sweets, FamilyMart for FamiChiki &amp; coffee, 7-Eleven for onigiri &amp; reliable ATMs. All take IC cards &amp; most take Apple Pay.</div>
 </section>
 
 <!-- ===== MONEY ===== -->
@@ -491,6 +594,89 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
     </div>
 
   </div>
+
+  <h3 style="font-size:18px;margin-top:1.6rem">🍷🍺🥃 Bar-to-bar crawls by drink</h3>
+  <p class="lead">Pick your poison and follow the route — each is a tight, walkable cluster with the stops in order. Reserve the tiny ones; most are cash-friendly.</p>
+
+  <div class="grid2">
+
+    <div class="card accent-red">
+      <h3>🍷 Wine crawl · Tokyo</h3>
+      <p>West Tokyo is the natural-wine heartland.</p>
+      <ol style="margin:4px 0 8px 18px;font-size:13px;color:var(--muted)">
+        <li><strong>Ahiru Store</strong> (Tomigaya) — iconic natural wine &amp; fresh bread; tiny, queue early</li>
+        <li><strong>Winestand Waltz</strong> (Ebisu) — standing wine, by-the-glass flights</li>
+        <li><strong>Shidax-area &amp; Nakameguro</strong> riverside wine bars to finish</li>
+      </ol>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Ahiru+Store+Tomigaya+Tokyo" target="_blank">→ Ahiru Store</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Winestand+Waltz+Ebisu" target="_blank">→ Waltz</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/natural+wine+bar+Nakameguro" target="_blank">→ Nakameguro</a>
+    </div>
+
+    <div class="card accent-amber">
+      <h3>🍺 Craft-beer crawl · Tokyo</h3>
+      <p>Shibuya/Harajuku tap cluster — easy on foot.</p>
+      <ol style="margin:4px 0 8px 18px;font-size:13px;color:var(--muted)">
+        <li><strong>Mikkeller Tokyo</strong> (Shibuya) — Danish gypsy-brewer taproom</li>
+        <li><strong>Goodbeer Faucets</strong> (Shibuya) — 40+ rotating taps</li>
+        <li><strong>Baird Beer</strong> Taproom (Harajuku) — your itinerary stop</li>
+        <li>Detour: <strong>Popeye</strong> (Ryogoku) — 70 taps, legendary</li>
+      </ol>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Mikkeller+Tokyo+Shibuya" target="_blank">→ Mikkeller</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Goodbeer+Faucets+Shibuya" target="_blank">→ Goodbeer</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Popeye+beer+Ryogoku" target="_blank">→ Popeye</a>
+    </div>
+
+    <div class="card accent-amber">
+      <h3>🍺 Craft-beer · Osaka &amp; Kyoto</h3>
+      <ol style="margin:4px 0 8px 18px;font-size:13px;color:var(--muted)">
+        <li><strong>Beer Belly</strong> (Osaka) — Minoh Brewery's own bar</li>
+        <li><strong>Craft Beer Base</strong> / <strong>Yellow Ape Craft</strong> (Osaka)</li>
+        <li><strong>Kyoto Beer Lab</strong> &amp; <strong>Spring Valley</strong> (Kyoto)</li>
+      </ol>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Beer+Belly+Osaka" target="_blank">→ Beer Belly</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/craft+beer+bar+Osaka" target="_blank">→ Osaka taps</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Kyoto+Beer+Lab" target="_blank">→ Kyoto Beer Lab</a>
+    </div>
+
+    <div class="card accent-green">
+      <h3>🍶 Sake crawl</h3>
+      <ol style="margin:4px 0 8px 18px;font-size:13px;color:var(--muted)">
+        <li><strong>Kurand Sake Market</strong> (Tokyo) — 100+ self-pour, all-you-can-drink</li>
+        <li><strong>Pontocho</strong> riverside sake counters (Kyoto)</li>
+        <li><strong>Sake Bar Yoramu</strong> (Kyoto) — rare aged sake</li>
+        <li><strong>Fushimi</strong> tasting rooms (Kyoto's sake district)</li>
+      </ol>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Kurand+Sake+Market+Tokyo" target="_blank">→ Kurand</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Sake+Bar+Yoramu+Kyoto" target="_blank">→ Yoramu</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/sake+bar+Pontocho+Kyoto" target="_blank">→ Pontocho</a>
+    </div>
+
+    <div class="card accent-blue">
+      <h3>🥃 Whisky crawl</h3>
+      <ol style="margin:4px 0 8px 18px;font-size:13px;color:var(--muted)">
+        <li><strong>Zoetrope</strong> (Shinjuku) — 300+ Japanese whiskies</li>
+        <li><strong>Campbelltoun Loch</strong> (Shimbashi) — tiny Scotch shrine</li>
+        <li>Osaka: <strong>Bar K</strong> &amp; <strong>Augusta Tarlogie</strong></li>
+      </ol>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Zoetrope+whisky+bar+Shinjuku" target="_blank">→ Zoetrope</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Campbelltoun+Loch+Shimbashi" target="_blank">→ Campbelltoun</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Bar+K+whisky+Osaka" target="_blank">→ Bar K</a>
+    </div>
+
+    <div class="card accent-blue">
+      <h3>🍸 Cocktail &amp; gin crawl</h3>
+      <ol style="margin:4px 0 8px 18px;font-size:13px;color:var(--muted)">
+        <li><strong>Bar High Five</strong> → <strong>Star Bar</strong> (Ginza, Tokyo) — master classics</li>
+        <li><strong>Benfiddich</strong> (Nishi-Shinjuku) — foraged botanicals</li>
+        <li>Gin: <strong>Nokishita711</strong> (Kyoto) — Ki No Bi flights</li>
+      </ol>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Bar+High+Five+Ginza" target="_blank">→ High Five</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Bar+Benfiddich+Shinjuku" target="_blank">→ Benfiddich</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Nokishita711+Kyoto" target="_blank">→ Nokishita711</a>
+    </div>
+
+  </div>
 </section>
 
 <!-- ===== FOOD ===== -->
@@ -737,6 +923,120 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <div class="tip">🗑️ Public bins are rare — carry a small bag for trash until you find one (usually by konbini/vending machines). Tattoos? Some onsen restrict them; check ahead or look for private/family baths.</div>
 </section>
 
+<!-- ===== INDEX ===== -->
+<section id="index">
+  <h2>🔗 All places &amp; links</h2>
+  <p class="lead">Every spot mentioned anywhere on this page, grouped by city — one tap opens it in Google Maps. Booking/official sites are marked 🎟️.</p>
+
+  <div class="hub">
+
+    <div class="idxcard" style="border-left:3px solid var(--kanazawa)">
+      <h3>🟣 Kanazawa</h3>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Kenrokuen+Garden+Kanazawa" target="_blank">Kenroku-en Garden</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Kanazawa+Castle" target="_blank">Kanazawa Castle</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Nagamachi+Samurai+District+Kanazawa" target="_blank">Nagamachi Samurai District</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Higashi+Chaya+District+Kanazawa" target="_blank">Higashi Chaya District</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/21st+Century+Museum+of+Art+Kanazawa" target="_blank">21st Century Museum of Art</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Omicho+Market+Kanazawa" target="_blank">Omicho Market</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Fukumitsuya+Sake+Brewery+Kanazawa" target="_blank">Fukumitsuya Sake</a>
+    </div>
+
+    <div class="idxcard" style="border-left:3px solid var(--nagano)">
+      <h3>🟢 Nagano</h3>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Zenkoji+Temple+Nagano" target="_blank">Zenko-ji Temple</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Yamanoma+Brewery+Nagano" target="_blank">Yamanoma Brewery</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Mallika+Brewing+Nagano" target="_blank">Mallika Brewing</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Matsumoto+Castle" target="_blank">Matsumoto Castle</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Matsumoto+Brewing+Co" target="_blank">Matsumoto Brewing</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Jigokudani+Monkey+Park" target="_blank">Jigokudani Snow Monkeys</a>
+      <a class="linkbtn" href="https://www.hombo.co.jp/en/" target="_blank">🎟️ Mars Shinshu Distillery</a>
+    </div>
+
+    <div class="idxcard" style="border-left:3px solid var(--tokyo)">
+      <h3>🩷 Tokyo</h3>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Sensoji+Temple+Asakusa" target="_blank">Senso-ji</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Akihabara+Electric+Town" target="_blank">Akihabara</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Yodobashi+Camera+Akihabara" target="_blank">Yodobashi Akiba</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Super+Potato+Akihabara" target="_blank">Super Potato</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Mandarake+Complex+Akihabara" target="_blank">Mandarake</a>
+      <a class="linkbtn" href="https://www.teamlab.art/e/planets/" target="_blank">🎟️ teamLab Planets</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Imperial+Palace+East+Gardens+Tokyo" target="_blank">Imperial Palace Gardens</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Meiji+Shrine+Tokyo" target="_blank">Meiji Shrine</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Takeshita+Street+Harajuku" target="_blank">Takeshita Street</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/KIDDY+LAND+Harajuku" target="_blank">KIDDY LAND</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Nippori+Fabric+Town+Tomato" target="_blank">Nippori Fabric Town</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Baird+Beer+Harajuku+Taproom" target="_blank">Baird Beer Harajuku</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Yodobashi+Camera+Shinjuku" target="_blank">Yodobashi Shinjuku</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Okadaya+Shinjuku" target="_blank">Okadaya</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Shinjuku+Golden+Gai" target="_blank">Golden Gai</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Omoide+Yokocho+Shinjuku" target="_blank">Omoide Yokocho</a>
+      <a class="linkbtn" href="https://www.ghibli-museum.jp/en/" target="_blank">🎟️ Ghibli Museum</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Shibuya+Sky" target="_blank">Shibuya Sky</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Shibuya+Crossing" target="_blank">Shibuya Crossing</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Tokyo+Skytree" target="_blank">Tokyo Skytree</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Ameyoko+Market+Ueno" target="_blank">Ameyoko</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Toyosu+Market+Tokyo" target="_blank">Toyosu Market</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Tsukiji+Outer+Market" target="_blank">Tsukiji Outer Market</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Odaiba+Tokyo" target="_blank">Odaiba</a>
+    </div>
+
+    <div class="idxcard" style="border-left:3px solid var(--osaka)">
+      <h3>🟠 Osaka &amp; Nara</h3>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Dotonbori+Osaka" target="_blank">Dotonbori</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Osaka+Castle" target="_blank">Osaka Castle</a>
+      <a class="linkbtn" href="https://www.asahibeer.co.jp/brewery/suita/" target="_blank">🎟️ Asahi Suita Factory</a>
+      <a class="linkbtn" href="https://www.kaiyukan.com/language/eng/" target="_blank">🎟️ Kaiyukan Aquarium</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Den+Den+Town+Osaka" target="_blank">Den Den Town</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Atelier+to+Nani+Iro+Osaka" target="_blank">nani IRO atelier</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Umeda+Sky+Building+Osaka" target="_blank">Umeda Sky Building</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Shinsekai+Tsutenkaku+Osaka" target="_blank">Shinsekai / Tsutenkaku</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Kuromon+Ichiba+Market+Osaka" target="_blank">Kuromon Market</a>
+      <a class="linkbtn" href="https://www.usj.co.jp/web/en/us" target="_blank">🎟️ Universal Studios Japan</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Nara+Park" target="_blank">Nara Park</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Todaiji+Temple+Nara" target="_blank">Todai-ji</a>
+    </div>
+
+    <div class="idxcard" style="border-left:3px solid var(--kyoto)">
+      <h3>🔵 Kyoto</h3>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Fushimi+Inari+Taisha+Kyoto" target="_blank">Fushimi Inari</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Gekkeikan+Okura+Sake+Museum" target="_blank">Gekkeikan Sake Museum</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Arashiyama+Bamboo+Grove" target="_blank">Arashiyama Bamboo Grove</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Kinkakuji+Golden+Pavilion+Kyoto" target="_blank">Kinkaku-ji</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Nijo+Castle+Kyoto" target="_blank">Nijo Castle</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Nomura+Tailor+Kyoto" target="_blank">Nomura Tailor</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Nishiki+Market+Kyoto" target="_blank">Nishiki Market</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Kiyomizudera+Temple+Kyoto" target="_blank">Kiyomizu-dera</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Gion+Kyoto" target="_blank">Gion</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Pontocho+Alley+Kyoto" target="_blank">Pontocho</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Tenryuji+Temple+Arashiyama" target="_blank">Tenryu-ji</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Arashiyama+Monkey+Park+Iwatayama" target="_blank">Arashiyama Monkey Park</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Ryoanji+Temple+Kyoto" target="_blank">Ryoan-ji</a>
+      <a class="linkbtn" href="https://www.suntory.com/factory/yamazaki/" target="_blank">🎟️ Suntory Yamazaki</a>
+      <a class="linkbtn" href="https://kyotodistillery.jp/en/" target="_blank">🎟️ Ki No Bi gin</a>
+    </div>
+
+    <div class="idxcard" style="border-left:3px solid #f87171">
+      <h3>🔴 Hiroshima &amp; day trips</h3>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Hiroshima+Peace+Memorial+Museum" target="_blank">Peace Memorial Museum</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Atomic+Bomb+Dome+Hiroshima" target="_blank">Atomic Bomb Dome</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Miyajima+Itsukushima+Shrine" target="_blank">Miyajima</a>
+      <a class="linkbtn" href="https://www.google.com/maps/search/Saijo+Sake+District+Higashihiroshima" target="_blank">Saijo Sake Town</a>
+      <a class="linkbtn" href="https://www.hakutsuru.co.jp/english/" target="_blank">🎟️ Hakutsuru (Nada/Kobe)</a>
+    </div>
+
+    <div class="idxcard">
+      <h3>🚆 Transport &amp; booking</h3>
+      <a class="linkbtn" href="https://smart-ex.jp/en/" target="_blank">🎟️ smartEX (shinkansen)</a>
+      <a class="linkbtn" href="https://www.eki-net.com/en/" target="_blank">🎟️ JR East (eki-net)</a>
+      <a class="linkbtn" href="https://www.westjr.co.jp/global/en/ticket/pass/kansai_hiroshima/" target="_blank">🎟️ Kansai-Hiroshima Pass</a>
+      <a class="linkbtn" href="https://secure.booking.com/mytrips.html" target="_blank">🎟️ Booking.com trips</a>
+      <a class="linkbtn" href="https://www.airalo.com/japan-esim" target="_blank">🎟️ Airalo eSIM</a>
+      <a class="linkbtn" href="https://www.magical-trip.com/" target="_blank">🎟️ Magical Trip tours</a>
+    </div>
+
+  </div>
+</section>
+
 <footer>
   Built as a personal trip reference · prices are approximate 2026 estimates, verify at booking · not affiliated with any operator.
 </footer>
@@ -757,6 +1057,35 @@ function save(){
     var chks=document.querySelectorAll('.chk');
     s.forEach(function(i){if(chks[i])chks[i].classList.add('done')});
   }catch(e){}
+})();
+</script>
+
+<!-- Leaflet interactive map -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  var el=document.getElementById('tripmap');
+  if(!el||typeof L==='undefined')return;
+  var pts=[
+    {n:'Kanazawa',d:'Jul 2–4 · Hotel Torifito',c:'#a78bfa',ll:[36.5780,136.6480]},
+    {n:'Nagano',d:'Jul 4–7 · JAL City Nagano',c:'#34d399',ll:[36.6485,138.1880]},
+    {n:'Tokyo (Ueno)',d:'Jul 7–12 · Sunroute Stellar Ueno',c:'#f472b6',ll:[35.7138,139.7770]},
+    {n:'Osaka',d:'Jul 12–17 · Bridge Hotel Shinsaibashi',c:'#fb923c',ll:[34.6740,135.5010]},
+    {n:'Kyoto',d:'Jul 17–20 · Kyoto Century Hotel',c:'#60a5fa',ll:[34.9858,135.7588]},
+    {n:'Hiroshima',d:'Jul 14 · day trip (Peace Park, Miyajima)',c:'#f87171',ll:[34.3955,132.4536]},
+    {n:'Nara',d:'Jul 16 · day trip (deer park, Todai-ji)',c:'#f87171',ll:[34.6851,135.8048]},
+    {n:'Kansai Airport (KIX)',d:'Arrive Jul 2 · depart Jul 20',c:'#9aa3b0',ll:[34.4342,135.2440]}
+  ];
+  var map=L.map('tripmap',{scrollWheelZoom:false}).setView([35.2,136.5],6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
+  var bounds=[];
+  pts.forEach(function(p){
+    var m=L.circleMarker(p.ll,{radius:9,color:'#0f1115',weight:2,fillColor:p.c,fillOpacity:1}).addTo(map);
+    m.bindPopup('<b>'+p.n+'</b><br>'+p.d+'<br><a href="https://www.google.com/maps/search/'+encodeURIComponent(p.n+' Japan')+'" target="_blank">Open in Google Maps →</a>');
+    bounds.push(p.ll);
+  });
+  map.fitBounds(bounds,{padding:[45,45]});
+  setTimeout(function(){map.invalidateSize();},300);
 })();
 </script>
 </body>
