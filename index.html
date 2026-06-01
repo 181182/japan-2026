@@ -114,16 +114,45 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 .mchk{width:16px;height:16px;border:1.5px solid var(--faint);border-radius:4px;flex-shrink:0;cursor:pointer;margin-top:1px}
 .mchk.done{background:var(--green);border-color:var(--green)}
 .nok{color:var(--faint);font-size:0.92em;white-space:nowrap}
+/* --- Japan theme --- */
+body{position:relative}
+.wrap{position:relative;z-index:2}
+.sakura-fall{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;top:-24px;width:13px;height:13px;background:radial-gradient(circle at 30% 30%,#ffe1e9,#ffb7c5);border-radius:150% 0 150% 0;opacity:.6;animation:sakura-drift linear infinite}
+@keyframes sakura-drift{0%{transform:translateY(-24px) translateX(0) rotate(0);opacity:.7}100%{transform:translateY(106vh) translateX(70px) rotate(420deg);opacity:.45}}
+.fuji-banner{width:100%;border-radius:14px;border:1px solid var(--line);margin-bottom:1.3rem;display:block}
+.bigmap{height:420px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface2)}
+.sectionmap{height:300px;border-radius:11px;overflow:hidden;border:1px solid var(--line);background:var(--surface2);margin:6px 0 4px}
+section h2::after{content:"";display:block;height:3px;width:56px;margin-top:7px;border-radius:3px;background:linear-gradient(90deg,#e0483e,#ffb7c5 70%,transparent)}
+.brand{letter-spacing:.3px}
+.maplead{font-size:12px;color:var(--faint);margin:4px 0 0}
+@media (prefers-reduced-motion: reduce){.petal{display:none}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
+
+<div class="sakura-fall" aria-hidden="true">
+  <span class="petal" style="left:4%;animation-duration:11s;animation-delay:0s"></span>
+  <span class="petal" style="left:12%;animation-duration:14s;animation-delay:2s;width:9px;height:9px"></span>
+  <span class="petal" style="left:21%;animation-duration:9s;animation-delay:1s"></span>
+  <span class="petal" style="left:30%;animation-duration:16s;animation-delay:4s;width:16px;height:16px"></span>
+  <span class="petal" style="left:39%;animation-duration:12s;animation-delay:0.5s"></span>
+  <span class="petal" style="left:48%;animation-duration:10s;animation-delay:3s;width:8px;height:8px"></span>
+  <span class="petal" style="left:57%;animation-duration:15s;animation-delay:1.5s"></span>
+  <span class="petal" style="left:66%;animation-duration:13s;animation-delay:5s;width:15px;height:15px"></span>
+  <span class="petal" style="left:74%;animation-duration:9.5s;animation-delay:2.5s"></span>
+  <span class="petal" style="left:82%;animation-duration:17s;animation-delay:0s;width:10px;height:10px"></span>
+  <span class="petal" style="left:90%;animation-duration:12.5s;animation-delay:3.5s"></span>
+  <span class="petal" style="left:96%;animation-duration:14.5s;animation-delay:1s;width:14px;height:14px"></span>
+</div>
 
 <nav><div class="inner">
   <span class="brand">🇯🇵 Japan 2026</span>
   <a href="#hub">Links</a>
   <a href="#map">Map</a>
   <a href="#mustdo">Must-do</a>
+  <a href="#sights">Sights map</a>
   <a href="#essentials">Essentials</a>
   <a href="#konbini">Konbini</a>
   <a href="#money">Money</a>
@@ -145,7 +174,35 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 <div class="wrap">
 
 <header class="hero">
-  <h1>Japan trip dashboard</h1>
+  <svg class="fuji-banner" viewBox="0 0 800 190" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Mount Fuji at sunset with cherry blossoms">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#241b3a"/><stop offset="0.55" stop-color="#3b2750"/><stop offset="1" stop-color="#7a3b54"/>
+      </linearGradient>
+      <linearGradient id="fuji" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2b3a63"/><stop offset="1" stop-color="#1b2540"/>
+      </linearGradient>
+    </defs>
+    <rect width="800" height="190" fill="url(#sky)"/>
+    <circle cx="610" cy="70" r="46" fill="#e0483e" opacity="0.9"/>
+    <circle cx="610" cy="70" r="62" fill="#e0483e" opacity="0.18"/>
+    <path d="M0 190 L250 64 Q300 34 350 64 L600 190 Z" fill="url(#fuji)"/>
+    <path d="M285 92 Q300 80 315 92 L338 110 Q322 102 312 110 Q300 100 288 110 Q278 102 262 110 Z" fill="#eef2f8"/>
+    <path d="M120 190 L300 92 Q300 110 330 120 L470 190 Z" fill="#243156" opacity="0.6"/>
+    <g opacity="0.92">
+      <path d="M40 150 Q90 120 150 130" stroke="#5a3a4a" stroke-width="3" fill="none"/>
+      <g fill="#ffb7c5">
+        <circle cx="52" cy="146" r="6"/><circle cx="78" cy="133" r="6"/><circle cx="104" cy="127" r="6"/><circle cx="132" cy="128" r="6"/><circle cx="150" cy="130" r="5"/>
+      </g>
+      <g fill="#ffd7e0">
+        <circle cx="64" cy="138" r="4"/><circle cx="92" cy="129" r="4"/><circle cx="120" cy="126" r="4"/>
+      </g>
+    </g>
+    <g fill="#ffffff" opacity="0.5">
+      <ellipse cx="200" cy="50" rx="34" ry="8"/><ellipse cx="430" cy="38" rx="46" ry="9"/>
+    </g>
+  </svg>
+  <h1>⛩️ Japan trip dashboard</h1>
   <div class="dates">2 – 21 July 2026 · Home → KIX → Home</div>
   <p class="tagline">Two travellers, mid-range, relaxed pace. The parents join Tokyo→Osaka (7–16 Jul). Everything you need to track, book, and ride — in one place.</p>
 
@@ -246,6 +303,22 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   </div>
 </section>
 
+<!-- ===== SIGHTS MAP ===== -->
+<section id="sights">
+  <h2>📍 Sights map — where everything is</h2>
+  <p class="lead">Every major destination across the trip, pinned and colour-coded by city. <strong>Tap any pin</strong> for its name, a quick how-to-get-there note, and a one-tap <strong>🚆 transit directions</strong> link. Use this to cluster nearby sights into the same day.</p>
+  <div id="landmark-map" class="bigmap"></div>
+  <div class="legend">
+    <span><span class="ld" style="background:var(--kanazawa)"></span>Kanazawa</span>
+    <span><span class="ld" style="background:var(--nagano)"></span>Nagano</span>
+    <span><span class="ld" style="background:var(--tokyo)"></span>Tokyo</span>
+    <span><span class="ld" style="background:var(--osaka)"></span>Osaka</span>
+    <span><span class="ld" style="background:var(--kyoto)"></span>Kyoto</span>
+    <span><span class="ld" style="background:#f87171"></span>Day trips</span>
+  </div>
+  <p class="maplead">Map tiles need an internet connection; the “Directions” links open Google Maps for live, turn-by-turn transit routing from wherever you are.</p>
+</section>
+
 <!-- ===== LINKS HUB ===== -->
 <section id="hub">
   <h2>🔗 Links &amp; booking tracker</h2>
@@ -327,6 +400,25 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
   <div class="card accent-amber">
     <h3>📲 Must-have apps</h3>
     <p><strong>Google Maps</strong> (transit is superb) · <strong>Japan Travel by NAVITIME</strong> (train routing + platform numbers) · <strong>Google Translate</strong> (download Japanese offline + camera mode for menus) · <strong>Booking.com</strong> (your hotels) · your <strong>airline app</strong>. Set Maps offline-area downloads for each city before you go.</p>
+  </div>
+
+  <div class="card accent-blue">
+    <h3>🎎 Etiquette &amp; customs — quick wins</h3>
+    <div class="grid2">
+      <ul style="margin:0 0 0 16px;font-size:13px;color:var(--muted)">
+        <li><strong>No tipping</strong> — it can confuse or offend. Great service is standard.</li>
+        <li><strong>Shoes off</strong> at ryokan, some restaurants, temples, fitting rooms — watch for a step up or slippers.</li>
+        <li><strong>Pay on the tray</strong>, not into the hand. Cash still rules small spots.</li>
+        <li><strong>Trains are quiet</strong> — phone on silent, no calls. No eating on local trains (shinkansen is fine).</li>
+      </ul>
+      <ul style="margin:0 0 0 16px;font-size:13px;color:var(--muted)">
+        <li><strong>Escalators:</strong> stand left in Tokyo, <em>right in Osaka</em>.</li>
+        <li><strong>Slurping noodles</strong> is polite; don't stick chopsticks upright in rice.</li>
+        <li><strong>Don't eat while walking</strong>; bin rubbish is rare — carry a small bag.</li>
+        <li><strong>Tattoos</strong> can bar entry to some onsen — seek tattoo-friendly or private baths.</li>
+      </ul>
+    </div>
+    <div class="tip">A little <strong>“sumimasen”</strong> (excuse me / thank you) and a small bow go a long way. Convenience-store and station staff are your best friends.</div>
   </div>
 </section>
 
@@ -779,6 +871,9 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);col
 
   <div class="tip">💡 <strong>How to read ratings:</strong> on <strong>Tabelog</strong>, Japan's local gold standard, <strong>3.5+ is very good</strong> and 3.8+ is exceptional (the scale runs low). On Google Maps, sort by rating but check it has 100+ reviews. A queue of locals is the best signal of all. Many great small places are <strong>cash-only</strong> — carry yen.</p>
 
+  <div id="food-map" class="sectionmap"></div>
+  <p class="maplead">🍱 The big food markets &amp; street-food districts — tap a pin for transit directions.</p>
+
   <div class="grid2">
 
     <div class="card" style="border-left:3px solid var(--kanazawa)">
@@ -1174,7 +1269,7 @@ function save(){
   var bounds=[];
   pts.forEach(function(p){
     var m=L.circleMarker(p.ll,{radius:9,color:'#0f1115',weight:2,fillColor:p.c,fillOpacity:1}).addTo(map);
-    m.bindPopup('<b>'+p.n+'</b><br>'+p.d+'<br><a href="https://www.google.com/maps/search/'+encodeURIComponent(p.n+' Japan')+'" target="_blank">Open in Google Maps →</a>');
+    m.bindPopup('<b>'+p.n+'</b><br>'+p.d+'<br><a href="https://www.google.com/maps/search/'+encodeURIComponent(p.n+' Japan')+'" target="_blank">Open in Maps →</a> · <a href="https://www.google.com/maps/dir/?api=1&destination='+p.ll[0]+','+p.ll[1]+'&travelmode=transit" target="_blank">🚆 Directions</a>');
     bounds.push(p.ll);
   });
   map.fitBounds(bounds,{padding:[45,45]});
@@ -1223,6 +1318,68 @@ function save(){
     m.fitBounds(pts,{padding:[35,35]});
     setTimeout(function(){m.invalidateSize();},350);
   });
+})();
+
+// ----- Sights & food place maps -----
+(function(){
+  if(typeof L==='undefined')return;
+  function dir(ll){return 'https://www.google.com/maps/dir/?api=1&destination='+ll[0]+','+ll[1]+'&travelmode=transit';}
+  function placeMap(id,items){
+    var el=document.getElementById(id); if(!el) return;
+    var m=L.map(id,{scrollWheelZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(m);
+    var b=[];
+    items.forEach(function(p){
+      var mk=L.circleMarker(p.ll,{radius:8,color:'#0f1115',weight:2,fillColor:p.c||'#e0483e',fillOpacity:1}).addTo(m);
+      mk.bindPopup('<b>'+p.n+'</b>'+(p.s?'<br><span style="color:#555">'+p.s+'</span>':'')+'<br><a href="'+dir(p.ll)+'" target="_blank">🚆 Transit directions →</a>');
+      b.push(p.ll);
+    });
+    if(b.length) m.fitBounds(b,{padding:[40,40]});
+    setTimeout(function(){m.invalidateSize();},400);
+  }
+  var K='#a78bfa',N='#34d399',T='#f472b6',O='#fb923c',Y='#60a5fa',R='#f87171';
+  var LANDMARKS=[
+    {n:'Kenroku-en Garden',c:K,ll:[36.5620,136.6626],s:'Kanazawa Loop Bus → Kenrokuen-shita'},
+    {n:'Higashi Chaya District',c:K,ll:[36.5720,136.6660],s:'Loop Bus → Hashiba-cho'},
+    {n:'Omicho Market',c:K,ll:[36.5719,136.6577],s:'10 min walk from Kanazawa Stn'},
+    {n:'21st Century Museum',c:K,ll:[36.5608,136.6580],s:'Loop Bus → Hirosaka'},
+    {n:'Zenko-ji Temple',c:N,ll:[36.6614,138.1870],s:'Bus from Nagano Stn (~10 min)'},
+    {n:'Jigokudani Snow Monkey Park',c:N,ll:[36.7330,138.4640],s:'Nagaden train → Yudanaka + bus'},
+    {n:'Matsumoto Castle',c:N,ll:[36.2385,137.9690],s:'JR to Matsumoto (~50 min) + walk'},
+    {n:'Senso-ji (Asakusa)',c:T,ll:[35.7148,139.7967],s:'Ginza/Asakusa line → Asakusa'},
+    {n:'Shibuya Crossing',c:T,ll:[35.6595,139.7004],s:'JR Yamanote → Shibuya'},
+    {n:'teamLab Planets',c:T,ll:[35.6486,139.7905],s:'Yurikamome → Shin-Toyosu'},
+    {n:'Meiji Shrine',c:T,ll:[35.6764,139.6993],s:'JR → Harajuku'},
+    {n:'Golden Gai (Shinjuku)',c:T,ll:[35.6940,139.7045],s:'JR → Shinjuku east exit'},
+    {n:'Tokyo Skytree',c:T,ll:[35.7101,139.8107],s:'Asakusa/Hanzomon → Oshiage'},
+    {n:'Toyosu Market',c:T,ll:[35.6450,139.7860],s:'Yurikamome → Shijo-mae'},
+    {n:'Dotonbori',c:O,ll:[34.6687,135.5013],s:'Midosuji line → Namba'},
+    {n:'Osaka Castle',c:O,ll:[34.6873,135.5259],s:'JR Loop → Osakajokoen'},
+    {n:'Shinsekai / Tsutenkaku',c:O,ll:[34.6525,135.5063],s:'Midosuji → Dobutsuen-mae'},
+    {n:'Umeda Sky Building',c:O,ll:[34.7053,135.4901],s:'JR → Osaka/Umeda + 9 min'},
+    {n:'Kuromon Market',c:O,ll:[34.6657,135.5063],s:'Sennichimae → Nipponbashi'},
+    {n:'Universal Studios Japan',c:O,ll:[34.6654,135.4323],s:'JR Yumesaki → Universal City'},
+    {n:'Fushimi Inari Taisha',c:Y,ll:[34.9671,135.7727],s:'JR Nara line → Inari'},
+    {n:'Kinkaku-ji (Golden Pavilion)',c:Y,ll:[35.0394,135.7292],s:'Bus 101/205 from Kyoto Stn'},
+    {n:'Arashiyama Bamboo Grove',c:Y,ll:[35.0170,135.6717],s:'JR Sagano → Saga-Arashiyama'},
+    {n:'Kiyomizu-dera',c:Y,ll:[34.9949,135.7850],s:'Bus → Gojo-zaka, walk up'},
+    {n:'Gion',c:Y,ll:[35.0036,135.7752],s:'Keihan → Gion-Shijo'},
+    {n:'Nijo Castle',c:Y,ll:[35.0142,135.7481],s:'Tozai line → Nijojo-mae'},
+    {n:'Hiroshima Peace Park',c:R,ll:[34.3915,132.4536],s:'Shinkansen → Hiroshima + tram'},
+    {n:'Miyajima (Itsukushima)',c:R,ll:[34.2960,132.3199],s:'JR Sanyo → Miyajimaguchi + ferry'},
+    {n:'Nara Park',c:R,ll:[34.6851,135.8430],s:'Kintetsu/JR → Nara'},
+    {n:'Todai-ji',c:R,ll:[34.6890,135.8398],s:'15 min walk from Nara Park'}
+  ];
+  placeMap('landmark-map',LANDMARKS);
+  var FOODS=[
+    {n:'Omicho Market — Kanazawa',c:K,ll:[36.5719,136.6577],s:'Sushi & kaisendon'},
+    {n:'Toyosu Market — Tokyo',c:T,ll:[35.6450,139.7860],s:'Sushi breakfast'},
+    {n:'Ameyoko — Tokyo',c:T,ll:[35.7100,139.7745],s:'Street food, Ueno'},
+    {n:'Dotonbori — Osaka',c:O,ll:[34.6687,135.5013],s:'Takoyaki, okonomiyaki'},
+    {n:'Kuromon Market — Osaka',c:O,ll:[34.6657,135.5063],s:'Seafood & street eats'},
+    {n:'Nishiki Market — Kyoto',c:Y,ll:[35.0050,135.7649],s:'"Kyoto\'s kitchen"'}
+  ];
+  placeMap('food-map',FOODS);
 })();
 
 // ----- Must-do bucket-list checkboxes (separate storage) -----
