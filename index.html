@@ -470,6 +470,7 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <link rel="stylesheet" href="assets/trip-live.css"/>
+<link rel="stylesheet" href="assets/trip-pro.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -877,6 +878,57 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
   <h2>🗣️ Pocket phrases</h2>
   <p class="lead">The handful of words that smooth almost every interaction. Tap a card to flip it — a smile and a small bow do the rest.</p>
   <div id="phrasebook"></div>
+
+  <h3>The full pocket phrasebook</h3>
+  <div class="grid2">
+    <div class="card accent-blue">
+      <h3>🙇 Everyday basics</h3>
+      <table>
+        <tr><th>Say</th><th>Japanese</th><th>Means</th></tr>
+        <tr><td><strong>Konnichiwa</strong></td><td>こんにちは</td><td>Hello</td></tr>
+        <tr><td><strong>Arigatō gozaimasu</strong></td><td>ありがとうございます</td><td>Thank you (polite)</td></tr>
+        <tr><td><strong>Sumimasen</strong></td><td>すみません</td><td>Excuse me / sorry / thanks — the magic word</td></tr>
+        <tr><td><strong>Onegaishimasu</strong></td><td>お願いします</td><td>Please</td></tr>
+        <tr><td><strong>Daijōbu desu</strong></td><td>大丈夫です</td><td>I'm fine / no thanks</td></tr>
+        <tr><td><strong>Eigo wa hanasemasu ka?</strong></td><td>英語は話せますか</td><td>Do you speak English?</td></tr>
+      </table>
+    </div>
+    <div class="card accent-green">
+      <h3>🍜 Restaurant &amp; bar</h3>
+      <table>
+        <tr><th>Say</th><th>Japanese</th><th>Means</th></tr>
+        <tr><td><strong>Kore o kudasai</strong></td><td>これをください</td><td>This one, please (point!)</td></tr>
+        <tr><td><strong>Osusume wa?</strong></td><td>おすすめは？</td><td>What do you recommend?</td></tr>
+        <tr><td><strong>Oishii!</strong></td><td>おいしい！</td><td>Delicious!</td></tr>
+        <tr><td><strong>Okaikei onegaishimasu</strong></td><td>お会計お願いします</td><td>The bill, please</td></tr>
+        <tr><td><strong>Kanpai!</strong></td><td>乾杯！</td><td>Cheers!</td></tr>
+        <tr><td><strong>Mizu o kudasai</strong></td><td>お水をください</td><td>Water, please</td></tr>
+      </table>
+    </div>
+    <div class="card accent-amber">
+      <h3>🛍️ Shopping</h3>
+      <table>
+        <tr><th>Say</th><th>Japanese</th><th>Means</th></tr>
+        <tr><td><strong>Ikura desu ka?</strong></td><td>いくらですか</td><td>How much is it?</td></tr>
+        <tr><td><strong>Kādo wa tsukaemasu ka?</strong></td><td>カードは使えますか</td><td>Can I pay by card?</td></tr>
+        <tr><td><strong>Fukuro wa irimasen</strong></td><td>袋はいりません</td><td>No bag, thanks</td></tr>
+        <tr><td><strong>Menzei dekimasu ka?</strong></td><td>免税できますか</td><td>Tax-free possible?</td></tr>
+        <tr><td><strong>Mite iru dake desu</strong></td><td>見ているだけです</td><td>Just looking, thanks</td></tr>
+      </table>
+    </div>
+    <div class="card accent-red">
+      <h3>🚉 Getting around &amp; help</h3>
+      <table>
+        <tr><th>Say</th><th>Japanese</th><th>Means</th></tr>
+        <tr><td><strong>… wa doko desu ka?</strong></td><td>〜はどこですか</td><td>Where is …?</td></tr>
+        <tr><td><strong>Eki</strong> / <strong>toire</strong></td><td>駅 / トイレ</td><td>Station / toilet (use with above)</td></tr>
+        <tr><td><strong>Kippu uriba</strong></td><td>切符売り場</td><td>Ticket office</td></tr>
+        <tr><td><strong>Michi ni mayoimashita</strong></td><td>道に迷いました</td><td>I'm lost</td></tr>
+        <tr><td><strong>Tasukete kudasai</strong></td><td>助けてください</td><td>Please help me</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="tip">🎌 Pronunciation is easy: every syllable gets equal weight, vowels like Spanish — <em>a-ri-ga-tō</em>, not "arigaydo". When in doubt: <strong>sumimasen</strong> + pointing + a smile solves 95% of everything.</div>
 </section>
 
 <!-- ===== KONBINI ===== -->
@@ -976,6 +1028,31 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
     </div>
   </div>
 
+  <div class="card">
+    <h3>🏷️ What things cost — quick reference</h3>
+    <div class="grid2">
+      <table>
+        <tr><th>Everyday</th><th>≈ price</th></tr>
+        <tr><td>Onigiri / konbini coffee</td><td>¥150–250 <span class="nok">(9–15 kr)</span></td></tr>
+        <tr><td>Vending-machine drink</td><td>¥130–180 <span class="nok">(8–10 kr)</span></td></tr>
+        <tr><td>Bowl of ramen</td><td>¥900–1,300 <span class="nok">(52–75 kr)</span></td></tr>
+        <tr><td>Kaiten sushi (per plate)</td><td>¥120–500 <span class="nok">(7–29 kr)</span></td></tr>
+        <tr><td>Lunch teishoku set</td><td>¥1,000–1,500 <span class="nok">(58–87 kr)</span></td></tr>
+        <tr><td>Izakaya dinner + drinks (pp)</td><td>¥3,500–5,500 <span class="nok">(200–320 kr)</span></td></tr>
+      </table>
+      <table>
+        <tr><th>Out &amp; about</th><th>≈ price</th></tr>
+        <tr><td>Metro / bus ride</td><td>¥180–250 <span class="nok">(10–15 kr)</span></td></tr>
+        <tr><td>Taxi flagfall</td><td>¥500–700 <span class="nok">(29–41 kr)</span></td></tr>
+        <tr><td>Temple / garden entry</td><td>¥300–800 <span class="nok">(17–46 kr)</span></td></tr>
+        <tr><td>Craft beer / cocktail</td><td>¥900–1,800 <span class="nok">(52–104 kr)</span></td></tr>
+        <tr><td>Onsen / sento visit</td><td>¥600–1,500 <span class="nok">(35–87 kr)</span></td></tr>
+        <tr><td>Coin locker (day)</td><td>¥400–800 <span class="nok">(23–46 kr)</span></td></tr>
+      </table>
+    </div>
+    <div class="win">💡 Rule of thumb: Japan eats <strong>cheaper than Norway</strong> at every level — a fantastic ¥1,000 lunch is ≈58 kr. Splurge guilt-free.</div>
+  </div>
+
   <div id="budget"></div>
 </section>
 
@@ -993,6 +1070,15 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
       <h3>📡 Pocket WiFi <span class="badge b-blue">shared</span></h3>
       <p>One device covers both phones + tablet, unlimited data, ~¥600–900/day <span class="nok">(≈35–52 kr)</span>. Pick up at KIX arrivals, drop in a return envelope at any post box on the way out. Best if you'll tether laptops or stream a lot.</p>
     </div>
+  </div>
+
+  <div class="card accent-amber">
+    <h3>📥 Offline prep — do this on the plane</h3>
+    <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Google Maps offline areas</strong> — download Kanazawa, Nagano, Tokyo, Osaka+Kyoto</span></div>
+    <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Google Translate</strong> — download the Japanese pack (camera mode works offline)</span></div>
+    <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Hotel addresses</strong> — screenshot each booking confirmation (in Japanese if possible, for taxis)</span></div>
+    <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>This page</strong> — open once, Add to Home Screen; checkboxes &amp; wishlist live on-device</span></div>
+    <div class="hubrow"><span class="chk" onclick="tk(this)"></span><span class="label"><strong>Spotify / podcasts</strong> — the Hokuriku shinkansen has tunnels. Many tunnels.</span></div>
   </div>
 
   <div class="tip">💡 <strong>Save this page offline:</strong> open it once in your browser, then <strong>Add to Home Screen</strong> (iPhone: Share → Add to Home Screen). It loads without signal — handy at Fushimi Inari at sunrise. Your booking checkboxes are stored on-device too.</div>
@@ -1944,5 +2030,6 @@ function tk2(el){el.classList.toggle('done');try{var s=[];document.querySelector
 <script src="assets/trip-fun.js"></script>
 <script src="assets/trip-live.js"></script>
 <script src="assets/trip-game.js"></script>
+<script src="assets/trip-pro.js"></script>
 </body>
 </html>

@@ -1,0 +1,88 @@
+/* Japan 2026 — professional polish layer
+   light "washi paper" theme (default) + dark toggle, scroll progress,
+   back-to-top, refined type & spacing, print styles */
+
+/* ---------- shared refinements (both themes) ---------- */
+.card p,.card li,.hubrow,.day li{font-size:13.5px}
+section{padding:2.6rem 0 .8rem}
+section .lead{font-size:14.5px;line-height:1.6}
+.card,.hubcard,.idxcard{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+td,th{padding:8px 10px}
+tr:hover td{background:color-mix(in srgb,var(--text) 3%,transparent)}
+.total td,tr:hover .total td{background:var(--surface2)}
+
+/* fix: phrase flip-cards mount on #phrasebook (id), grid rule only targeted .phrasebook */
+#phrasebook{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:10px;margin-top:.3rem}
+
+/* scroll progress */
+#scrollbar{position:fixed;top:0;left:0;height:2.5px;width:0;z-index:100;
+  background:linear-gradient(90deg,var(--torii,#e8554a),#ffb7c5);transition:width .1s linear}
+
+/* back to top */
+#totop{position:fixed;left:16px;bottom:16px;z-index:80;width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:17px;cursor:pointer;
+  opacity:0;pointer-events:none;transition:opacity .25s ease,transform .15s ease;box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+#totop.show{opacity:1;pointer-events:auto}
+#totop:hover{transform:translateY(-2px);color:var(--text)}
+
+/* theme toggle */
+.themetoggle{margin-left:auto;flex-shrink:0;display:flex;align-items:center;gap:6px;font-size:11px;
+  border:1px solid var(--line);background:var(--surface2);color:var(--muted);border-radius:999px;
+  padding:4px 12px;cursor:pointer;font-family:var(--mono,monospace);letter-spacing:.4px;white-space:nowrap}
+.themetoggle:hover{color:var(--text);border-color:var(--faint)}
+
+/* ---------- LIGHT THEME (washi paper) ---------- */
+body.light{
+  --bg:#f5f2ea; --surface:#fffdf7; --surface2:#efebdf; --line:#e0dacb;
+  --text:#22272e; --muted:#5b6470; --faint:#969aa3;
+  --paper:#fffdf7;
+  --kanazawa:#7857d6; --nagano:#0d9d6e; --tokyo:#d92f80; --osaka:#dd7012; --kyoto:#2563eb;
+  --accent:#b45309; --green:#0c8a59; --red:#d03030; --amber:#a16207; --blue:#2058c9;
+  --torii:#d8432f;
+  background:var(--bg);color:var(--text);
+}
+body.light nav{background:rgba(248,245,237,.93);border-bottom:1px solid var(--line)}
+body.light nav a:hover{background:var(--surface2)}
+body.light nav a.active{color:var(--torii)}
+
+/* callouts retuned for light */
+body.light .warn{background:rgba(161,98,7,.07);border-color:rgba(161,98,7,.25);color:#7c4a05}
+body.light .tip{background:rgba(32,88,201,.06);border-color:rgba(32,88,201,.22);color:#1c4ba8}
+body.light .win{background:rgba(12,138,89,.07);border-color:rgba(12,138,89,.25);color:#0a6e47}
+body.light .b-green{background:rgba(12,138,89,.12);color:var(--green)}
+body.light .b-red{background:rgba(208,48,48,.1);color:var(--red)}
+body.light .b-amber{background:rgba(161,98,7,.12);color:var(--amber)}
+body.light .b-blue{background:rgba(32,88,201,.1);color:var(--blue)}
+
+/* gentler elevation on paper */
+body.light .card,body.light .hubcard,body.light .idxcard,body.light .metric,body.light .leg,body.light .day{
+  box-shadow:0 1px 2px rgba(60,50,30,.05)}
+body.light .card:hover,body.light .hubcard:hover,body.light .idxcard:hover{
+  box-shadow:0 8px 22px -12px rgba(60,50,30,.25)}
+body.light .sec-kanji{opacity:.05}
+body.light .todaybar{background:linear-gradient(90deg,rgba(216,67,47,.08),rgba(255,183,197,.1) 60%,transparent);
+  border-color:rgba(216,67,47,.22)}
+body.light .heartbtn{background:var(--surface)}
+body.light .wishdrawer{box-shadow:0 18px 50px -18px rgba(60,50,30,.4)}
+body.light .om-dare{background:var(--surface2)}
+body.light .fc-got.on{color:#fff}
+body.light .stamp{background:var(--surface)}
+body.light #tripmap,body.light .crawlmap,body.light .sectionmap{border-color:var(--line)}
+body.light .chip[aria-pressed="true"]{color:#fff}
+body.light .tc-u b,body.light .hero h1{color:var(--text)}
+body.light .leaflet-container{background:#e8e4d8}
+
+/* checkbox visibility on paper */
+body.light .chk,body.light .mchk{border-color:#b9b2a0;background:#fff}
+body.light .chk.done,body.light .mchk.done{background:var(--green);border-color:var(--green)}
+
+/* ---------- print ---------- */
+@media print{
+  nav,.sakura-fall,.wishfab,.wishdrawer,#confetti-canvas,#totop,#scrollbar,.themetoggle,
+  .om-draw,.heartbtn,#sc-me,#sc-today{display:none !important}
+  body{background:#fff !important;color:#111 !important}
+  .card,.hubcard,.idxcard,.day,.leg,.metric{box-shadow:none !important;border:1px solid #ccc !important;break-inside:avoid}
+  section{padding:1.2rem 0 .4rem}
+  a{color:#111;text-decoration:none}
+  #tripmap{height:300px}
+}
