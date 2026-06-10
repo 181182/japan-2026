@@ -469,6 +469,7 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
 @media (prefers-reduced-motion: reduce){.hg-merc,.phrase-in,.iccard{transition:none}.ic-pi.go,.iccard.flash{animation:none}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<link rel="stylesheet" href="assets/trip-live.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -495,6 +496,7 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
   <a href="#hub">Links</a>
   <a href="#map">Map</a>
   <a href="#mustdo">Must-do</a>
+  <a href="#brave">Brave</a>
   <a href="#sights">Sights map</a>
   <a href="#essentials">Essentials</a>
   <a href="#phrases">Phrases</a>
@@ -707,6 +709,46 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
       <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label">Feed the bowing deer in <strong>Nara Park</strong></span></div>
       <div class="hubrow"><span class="mchk" onclick="tk2(this)"></span><span class="label"><strong>Todai-ji</strong> Great Buddha</span></div>
     </div>
+
+  </div>
+</section>
+
+<!-- ===== BRAVE / WORRY FLIP CARDS ===== -->
+<section id="brave">
+  <h2>💪 The brave list — worries, flipped</h2>
+  <p class="lead">Every "hmm, I'm not sure about that…" gets a card. Tap to flip it and see why it'll be fine — then hit <strong>I've got this</strong> when you're ready. Watch the courage meter fill up.</p>
+  <div class="bravebar"><span>Courage meter</span><span class="bb-track"><span class="bb-fill"></span></span><span class="bb-label">0 / 6 conquered</span></div>
+  <div class="bravegrid">
+
+    <div class="flipcard"><div class="fc-inner">
+      <div class="fc-face fc-front"><span class="fc-emoji">🍣</span><h3>Raw fish everywhere?</h3><p>"What if I don't like sushi and everything is raw?"</p><span class="fc-hint">tap to flip ↻</span></div>
+      <div class="fc-face fc-back"><p><b>Most Japanese food isn't raw at all.</b> Ramen, tonkatsu, tempura, yakitori, okonomiyaki, curry — all cooked, all amazing. Konbini have safe favourites 24/7, and plastic food models in windows mean you always see exactly what you're ordering. Sushi is 100% optional.</p><button type="button" class="fc-got">I've got this</button></div>
+    </div></div>
+
+    <div class="flipcard"><div class="fc-inner">
+      <div class="fc-face fc-front"><span class="fc-emoji">🗣️</span><h3>Nobody speaks English?</h3><p>"How will we order, ask for help, find anything?"</p><span class="fc-hint">tap to flip ↻</span></div>
+      <div class="fc-face fc-back"><p><b>Japan is built for visitors who don't speak Japanese.</b> Stations, menus and signs have English; Google Translate's camera reads anything instantly; and the <a href="#phrases">pocket phrases</a> on this page cover 95% of situations. Locals are famously patient — pointing + smiling works wonders.</p><button type="button" class="fc-got">I've got this</button></div>
+    </div></div>
+
+    <div class="flipcard"><div class="fc-inner">
+      <div class="fc-face fc-front"><span class="fc-emoji">🌏</span><h3>Earthquakes?</h3><p>"What if the ground starts shaking while we're there?"</p><span class="fc-hint">tap to flip ↻</span></div>
+      <div class="fc-face fc-back"><p><b>Japan is the best-prepared country on Earth.</b> Buildings and hotels are engineered to strict quake codes, phones get automatic early-warning alerts, and small tremors are routine non-events locals barely notice. Emergency numbers are in <a href="#essentials">Essentials</a> — but odds are you'll feel nothing at all.</p><button type="button" class="fc-got">I've got this</button></div>
+    </div></div>
+
+    <div class="flipcard"><div class="fc-inner">
+      <div class="fc-face fc-front"><span class="fc-emoji">🚇</span><h3>Getting lost in the crowds?</h3><p>"Tokyo has 37 million people and the metro map looks like spaghetti."</p><span class="fc-hint">tap to flip ↻</span></div>
+      <div class="fc-face fc-back"><p><b>Google Maps transit in Japan is flawless</b> — exact platform, exact car, exact price. The IC card just taps in and out, no tickets to decode. Every station has English signs and numbered exits. And we're a team: worst case, the next train is 4 minutes away.</p><button type="button" class="fc-got">I've got this</button></div>
+    </div></div>
+
+    <div class="flipcard"><div class="fc-inner">
+      <div class="fc-face fc-front"><span class="fc-emoji">♨️</span><h3>Onsen etiquette?</h3><p>"Bathing with strangers, naked, with rules I don't know?"</p><span class="fc-hint">tap to flip ↻</span></div>
+      <div class="fc-face fc-back"><p><b>The rules fit on one hand:</b> wash at the showers first, small towel stays out of the water, hair tied up, no photos. That's it — nobody stares, everyone minds their own bath. Not ready for the shared one? Many places offer <b>private (kashikiri) baths</b> you can book for just us two.</p><button type="button" class="fc-got">I've got this</button></div>
+    </div></div>
+
+    <div class="flipcard"><div class="fc-inner">
+      <div class="fc-face fc-front"><span class="fc-emoji">💴</span><h3>Cash-only confusion?</h3><p>"Will our cards even work? How much cash do we carry?"</p><span class="fc-hint">tap to flip ↻</span></div>
+      <div class="fc-face fc-back"><p><b>Easier than you think.</b> 7-Eleven ATMs are everywhere, open 24/7, and happily take Norwegian cards. Cities are increasingly card-friendly, the IC card pays for transit, vending machines and konbini. The <a href="#money">Money section</a> has the full plan — carrying ~¥10–20k cash covers the rest.</p><button type="button" class="fc-got">I've got this</button></div>
+    </div></div>
 
   </div>
 </section>
@@ -1671,6 +1713,7 @@ function save(){
     {n:'Kansai Airport (KIX)',d:'Arrive Jul 2 · depart Jul 20',c:'#9aa3b0',ll:[34.4342,135.2440]}
   ];
   var map=L.map('tripmap',{scrollWheelZoom:false}).setView([35.2,136.5],6);
+  window.__tripmap=map;
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
   var bounds=[];
   pts.forEach(function(p){
@@ -1899,5 +1942,7 @@ function tk2(el){el.classList.toggle('done');try{var s=[];document.querySelector
 <script src="assets/trip-interactive.js"></script>
 <script src="assets/trip-revamp.js"></script>
 <script src="assets/trip-fun.js"></script>
+<script src="assets/trip-live.js"></script>
+<script src="assets/trip-game.js"></script>
 </body>
 </html>

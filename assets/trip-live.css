@@ -1,0 +1,129 @@
+/* Japan 2026 — live tracker + games styles */
+
+/* ---------- today banner ---------- */
+.todaybar{display:flex;align-items:center;gap:12px;margin:14px 0 4px;padding:.8rem 1rem;border-radius:12px;
+  background:linear-gradient(90deg,rgba(224,72,62,.16),rgba(255,183,197,.07) 60%,transparent);
+  border:1px solid rgba(255,183,197,.25)}
+.todaybar .tb-day{font-size:22px;font-weight:700;white-space:nowrap}
+.todaybar .tb-loc{font-size:13px;color:var(--muted)}
+.todaybar .tb-loc b{color:var(--text)}
+.todaybar .tb-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 0 rgba(244,114,182,.6);animation:tbpulse 1.8s infinite}
+@keyframes tbpulse{0%{box-shadow:0 0 0 0 rgba(244,114,182,.55)}70%{box-shadow:0 0 0 11px rgba(244,114,182,0)}100%{box-shadow:0 0 0 0 rgba(244,114,182,0)}}
+.todaybar a{font-size:12px;white-space:nowrap;margin-left:auto}
+
+/* ---------- map: pulsing here-marker ---------- */
+.here-pin{position:relative}
+.here-pin .hp-core{position:absolute;inset:0;margin:auto;width:16px;height:16px;border-radius:50%;
+  background:#e0483e;border:2.5px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.5)}
+.here-pin .hp-ring{position:absolute;inset:0;border-radius:50%;background:rgba(224,72,62,.45);animation:hppulse 1.6s ease-out infinite}
+@keyframes hppulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.me-pin .hp-core{background:#60a5fa}
+.me-pin .hp-ring{background:rgba(96,165,250,.45)}
+
+/* ---------- day scrubber ---------- */
+.scrub{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.85rem 1rem;margin-top:10px}
+.scrub .sc-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.scrub .sc-date{font-size:15px;font-weight:700;min-width:120px}
+.scrub .sc-where{font-size:12.5px;color:var(--muted);flex:1}
+.scrub .sc-where b{color:var(--text)}
+.scrub .sc-btn{font-size:11.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line);
+  background:var(--surface2);color:var(--text);cursor:pointer;white-space:nowrap}
+.scrub .sc-btn:hover{border-color:var(--blue)}
+.scrub .sc-btn.live{border-color:#e0483e;color:#ffb7c5}
+.scrub input[type=range]{width:100%;margin:12px 0 2px;accent-color:#e0483e;cursor:pointer}
+.scrub .sc-ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--faint)}
+.scrub .sc-ticks span{flex:1;text-align:center;border-left:1px solid var(--line);padding:2px 0}
+.scrub .sc-ticks span:first-child{border-left:none}
+
+/* ---------- hearts / wishlist ---------- */
+.heartbtn{position:absolute;top:9px;right:9px;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface2);color:var(--faint);font-size:15px;line-height:1;cursor:pointer;z-index:5;
+  display:flex;align-items:center;justify-content:center;transition:transform .15s,color .15s,border-color .15s;padding:0}
+.heartbtn:hover{transform:scale(1.15);color:#ffb7c5}
+.heartbtn.on{color:#f472b6;border-color:#f472b6;background:rgba(244,114,182,.12)}
+.heartbtn.pop{animation:hpop .4s ease}
+@keyframes hpop{30%{transform:scale(1.45)}60%{transform:scale(.9)}100%{transform:scale(1)}}
+.has-heart{position:relative}
+
+.wishfab{position:fixed;right:16px;bottom:16px;z-index:80;display:flex;align-items:center;gap:7px;
+  background:#e0483e;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:700;
+  cursor:pointer;box-shadow:0 8px 24px -8px rgba(224,72,62,.65)}
+.wishfab .wf-n{background:rgba(255,255,255,.25);border-radius:999px;padding:1px 8px;font-size:12px}
+.wishdrawer{position:fixed;right:14px;bottom:68px;z-index:81;width:min(330px,calc(100vw - 28px));max-height:55vh;overflow:auto;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;
+  box-shadow:0 18px 50px -18px rgba(0,0,0,.7);display:none}
+.wishdrawer.open{display:block}
+.wishdrawer h3{margin:0 0 6px;font-size:14px}
+.wishdrawer .wd-empty{font-size:12.5px;color:var(--muted)}
+.wishrow{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.wishrow:last-child{border-bottom:none}
+.wishrow a{flex:1;color:var(--text)}
+.wishrow .wr-sec{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.4px}
+.wishrow button{background:none;border:none;color:var(--faint);cursor:pointer;font-size:13px;padding:2px}
+.wishrow button:hover{color:var(--red)}
+
+/* ---------- omikuji ---------- */
+.omikuji{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;margin:12px 0;
+  text-align:center;position:relative;overflow:hidden}
+.omikuji h3{margin:0 0 4px}
+.omikuji .om-sub{font-size:12px;color:var(--muted);margin-bottom:10px}
+.om-draw{font-size:14px;font-weight:700;padding:9px 22px;border-radius:999px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#e0483e,#f472b6);color:#fff;box-shadow:0 6px 18px -6px rgba(224,72,62,.6)}
+.om-draw:active{transform:scale(.96)}
+.om-draw.shaking{animation:omshake .5s ease infinite}
+@keyframes omshake{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+.om-result{display:none;margin-top:12px}
+.om-result.show{display:block;animation:omin .45s ease}
+@keyframes omin{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+.om-rank{font-size:34px;font-weight:800;letter-spacing:2px}
+.om-rank small{display:block;font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0}
+.om-msg{font-size:13px;color:var(--muted);margin-top:6px;max-width:420px;margin-left:auto;margin-right:auto}
+.om-dare{margin-top:10px;font-size:13px;background:var(--surface2);border:1px dashed var(--line);border-radius:9px;
+  padding:.6rem .8rem;display:inline-block}
+.om-dare b{color:var(--accent)}
+
+/* ---------- stamp passport ---------- */
+.passport{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px}
+.stamp{width:62px;height:62px;border-radius:50%;border:2px dashed var(--line);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-size:9.5px;color:var(--faint);gap:1px;text-align:center;
+  transition:all .3s;background:var(--surface)}
+.stamp .st-ico{font-size:19px;filter:grayscale(1);opacity:.4}
+.stamp.got{border:2px solid var(--c,#e0483e);color:var(--c,#e0483e);transform:rotate(-6deg);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--c,#e0483e) 18%,transparent)}
+.stamp.got .st-ico{filter:none;opacity:1}
+.stamp.got{animation:stget .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes stget{0%{transform:scale(.3) rotate(20deg)}100%{transform:scale(1) rotate(-6deg)}}
+.passport .pp-label{font-size:11.5px;color:var(--muted);width:100%}
+
+/* ---------- brave / worry flip cards ---------- */
+.bravebar{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+.bravebar .bb-track{flex:1;height:8px;border-radius:999px;background:var(--surface2);overflow:hidden}
+.bravebar .bb-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#f59e0b,#34d399);transition:width .5s ease}
+.bravegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem}
+.flipcard{perspective:900px;min-height:185px;cursor:pointer}
+.flipcard .fc-inner{position:relative;width:100%;height:100%;min-height:185px;transition:transform .55s cubic-bezier(.3,1.1,.4,1);transform-style:preserve-3d}
+.flipcard.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;
+  border:1px solid var(--line);padding:1rem 1.05rem;display:flex;flex-direction:column}
+.fc-front{background:var(--surface)}
+.fc-front .fc-emoji{font-size:30px}
+.fc-front h3{margin:8px 0 4px;font-size:15px}
+.fc-front p{font-size:12px;color:var(--muted)}
+.fc-front .fc-hint{margin-top:auto;font-size:11px;color:var(--faint)}
+.fc-back{background:var(--surface2);transform:rotateY(180deg)}
+.fc-back p{font-size:12.3px;color:var(--muted);line-height:1.5}
+.fc-back p b{color:var(--text)}
+.fc-back .fc-got{margin-top:auto;align-self:flex-start;font-size:12px;font-weight:700;padding:6px 14px;border-radius:999px;
+  border:1.5px solid var(--green);background:transparent;color:var(--green);cursor:pointer}
+.fc-back .fc-got.on{background:var(--green);color:#0f1115}
+.flipcard.conquered .fc-front{border-color:var(--green)}
+.flipcard.conquered .fc-front .fc-emoji::after{content:" 💪"}
+
+/* ---------- confetti canvas ---------- */
+#confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:200}
+
+@media (max-width:560px){
+  .todaybar{flex-wrap:wrap}
+  .todaybar a{margin-left:0}
+  .stamp{width:54px;height:54px}
+}
