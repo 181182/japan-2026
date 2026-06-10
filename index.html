@@ -471,6 +471,7 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <link rel="stylesheet" href="assets/trip-live.css"/>
 <link rel="stylesheet" href="assets/trip-pro.css"/>
+<link rel="stylesheet" href="assets/trip-mag.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -493,28 +494,35 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
 </div>
 
 <nav><div class="inner">
+  <button type="button" class="navburger" aria-label="Menu" aria-expanded="false">☰</button>
   <span class="brand">🇯🇵 Japan 2026</span>
-  <a href="#hub">Links</a>
-  <a href="#map">Map</a>
+  <span class="navgroup">Plan</span>
+  <a href="#map">Trip map</a>
+  <a href="#plans">Day plans</a>
+  <a href="#days">Day-by-day</a>
+  <a href="#hub">Links &amp; booking</a>
+  <span class="navgroup">Do &amp; see</span>
   <a href="#mustdo">Must-do</a>
-  <a href="#brave">Brave</a>
+  <a href="#brave">Brave list</a>
   <a href="#sights">Sights map</a>
+  <a href="#tours">Tours</a>
+  <span class="navgroup">Eat &amp; drink</span>
+  <a href="#food">Food</a>
+  <a href="#brew">Breweries</a>
+  <a href="#bars">Bars</a>
+  <span class="navgroup">Getting around</span>
+  <a href="#passes">JR passes</a>
+  <a href="#transit">IC &amp; buses</a>
+  <a href="#baggage">Baggage</a>
+  <a href="#frequency">Trains</a>
+  <span class="navgroup">Survival kit</span>
   <a href="#essentials">Essentials</a>
   <a href="#phrases">Phrases</a>
   <a href="#konbini">Konbini</a>
   <a href="#money">Money</a>
-  <a href="#connect">Connect</a>
-  <a href="#passes">Passes</a>
-  <a href="#transit">IC &amp; buses</a>
-  <a href="#baggage">Baggage</a>
-  <a href="#frequency">Trains</a>
-  <a href="#brew">Breweries</a>
-  <a href="#bars">Bars</a>
-  <a href="#food">Food</a>
-  <a href="#tours">Tours</a>
-  <a href="#plans">Day plans</a>
-  <a href="#days">Day-by-day</a>
+  <a href="#connect">Connectivity</a>
   <a href="#packing">Packing</a>
+  <span class="navgroup">Reference</span>
   <a href="#index">All links</a>
 </div></nav>
 
@@ -613,7 +621,8 @@ footer{font-family:var(--mono);font-size:11px;letter-spacing:.3px}
     </g>
   </svg>
   </svg>
-  <h1>⛩️ Japan trip dashboard</h1>
+  <div class="kicker">Field guide · Two travellers · Five cities</div>
+  <h1>⛩️ Japan, July 2026</h1>
   <div class="dates">2 – 21 July 2026 · Home → KIX → Home</div>
   <p class="tagline">Two travellers, mid-range, relaxed pace. The parents join Tokyo→Osaka (7–16 Jul). Everything you need to track, book, and ride — in one place.</p>
 
@@ -2031,5 +2040,6 @@ function tk2(el){el.classList.toggle('done');try{var s=[];document.querySelector
 <script src="assets/trip-live.js"></script>
 <script src="assets/trip-game.js"></script>
 <script src="assets/trip-pro.js"></script>
+<script src="assets/trip-mag.js"></script>
 </body>
 </html>

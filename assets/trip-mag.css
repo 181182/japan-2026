@@ -1,0 +1,89 @@
+/* Japan 2026 — magazine / editorial layout revamp
+   fixed sidebar nav · full-bleed hero · editorial type scale
+   loads last; restyles skeleton without touching section internals */
+
+:root{ --sidebar:236px; }
+
+/* ============ SIDEBAR NAV (desktop) ============ */
+@media (min-width:1100px){
+  nav{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar);z-index:60;
+    border-right:1px solid var(--line);border-bottom:none;
+    background:var(--surface);backdrop-filter:none;overflow-y:auto;overscroll-behavior:contain}
+  nav .inner{display:flex;flex-direction:column;align-items:stretch;gap:2px;
+    max-width:none;padding:1.6rem 1.1rem 1.2rem;height:100%;overflow:visible}
+  nav .brand{font-size:21px;line-height:1.15;margin:0 0 1.6rem;padding:0 .45rem}
+  nav .navgroup{font-family:var(--mono,monospace);font-size:9.5px;letter-spacing:1.6px;
+    text-transform:uppercase;color:var(--faint);margin:1.1rem 0 .25rem;padding:0 .45rem}
+  nav .navgroup:first-of-type{margin-top:0}
+  nav a{font-size:13px;padding:5px 9px;border-radius:6px;border-left:2px solid transparent}
+  nav a.active{border-left-color:var(--torii,#e0483e);background:color-mix(in srgb,var(--torii,#e0483e) 7%,transparent);
+    color:var(--torii,#e0483e);font-weight:600}
+  nav .themetoggle{margin:1.4rem .45rem 0;justify-content:center}
+  .navburger{display:none}
+
+  body{padding-left:var(--sidebar)}
+  .wrap{max-width:1060px;padding:0 3.2rem 5rem}
+  #totop{left:calc(var(--sidebar) + 18px)}
+}
+
+/* ============ MOBILE: top bar + slide-in drawer ============ */
+@media (max-width:1099px){
+  nav .inner{flex-wrap:nowrap}
+  .navburger{display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    width:34px;height:34px;border-radius:8px;border:1px solid var(--line);
+    background:var(--surface2);color:var(--text);font-size:16px;cursor:pointer;margin-right:4px}
+  nav .navgroup{display:none}
+  nav.open .inner{flex-wrap:wrap;padding-bottom:.8rem}
+  nav.open .navgroup{display:block;width:100%;font-family:var(--mono,monospace);font-size:9.5px;
+    letter-spacing:1.6px;text-transform:uppercase;color:var(--faint);margin:.5rem 0 .1rem}
+  nav:not(.open) .inner{overflow-x:auto}
+}
+
+/* ============ EDITORIAL HERO ============ */
+.hero{padding:3.2rem 0 2rem;border-bottom:none}
+.hero .kicker{font-family:var(--mono,monospace);font-size:11px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--torii,#e0483e);margin-bottom:.9rem;display:flex;align-items:center;gap:12px}
+.hero .kicker::after{content:"";flex:1;height:1px;background:var(--line)}
+.hero h1{font-size:clamp(38px,5.2vw,58px);line-height:1.02;letter-spacing:-1px;max-width:14ch}
+.hero .dates{font-family:var(--mono,monospace);font-size:13px;letter-spacing:1px;margin-top:14px}
+.hero .tagline{font-size:16px;line-height:1.65;max-width:54ch;margin-top:14px}
+.fuji-scene{margin-top:2rem}
+
+/* metrics → editorial stat strip */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin:2.2rem 0 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.metric{background:none;border:none;border-radius:0;border-left:1px solid var(--line);
+  padding:1.1rem 1.2rem;box-shadow:none !important}
+.metric:first-child{border-left:none}
+.metric:hover{transform:none}
+.metric .v{font-family:var(--serif,serif);font-size:30px;font-weight:800}
+.metric .l{font-family:var(--mono,monospace);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;margin-top:5px}
+
+/* journey → connected route ribbon */
+.journey{position:relative;margin:1.6rem 0 0;gap:10px}
+.journey::before{content:"";position:absolute;top:50%;left:2%;right:2%;height:1px;
+  background:var(--line);z-index:0}
+.leg{position:relative;z-index:1;border-radius:10px}
+
+/* ============ SECTION RHYTHM ============ */
+section{padding:3.6rem 0 1rem;position:relative}
+section h2{font-size:clamp(26px,3vw,34px);letter-spacing:-.5px}
+section .lead{font-size:15.5px;line-height:1.7;max-width:62ch;margin-bottom:1.5rem}
+.sec-kanji{display:block !important;top:2.2rem;font-size:110px;opacity:.04}
+body.light .sec-kanji{opacity:.05}
+h3{font-size:16px}
+
+/* cards: flatter, hairline editorial */
+.card,.hubcard,.idxcard{border-radius:8px}
+
+/* footer */
+footer{margin-top:5rem;padding:2.2rem 0 1rem;text-align:center}
+
+/* keep today banner readable above hero kicker */
+.todaybar{margin-top:1.6rem}
+
+@media (max-width:640px){
+  .hero h1{font-size:34px}
+  .metric{padding:.8rem .9rem}
+  .metric .v{font-size:24px}
+}
