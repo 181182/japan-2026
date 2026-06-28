@@ -86,13 +86,14 @@
 .passport{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px}
 .stamp{width:62px;height:62px;border-radius:50%;border:2px dashed var(--line);display:flex;flex-direction:column;
   align-items:center;justify-content:center;font-size:9.5px;color:var(--faint);gap:1px;text-align:center;
-  transition:all .3s;background:var(--surface)}
+  transition:transform .3s ease, box-shadow .3s ease;background:var(--surface)}
 .stamp .st-ico{font-size:19px;filter:grayscale(1);opacity:.4}
-.stamp.got{border:2px solid var(--c,#e0483e);color:var(--c,#e0483e);transform:rotate(-6deg);
-  box-shadow:0 0 0 3px color-mix(in srgb,var(--c,#e0483e) 18%,transparent)}
-.stamp.got .st-ico{filter:none;opacity:1}
-.stamp.got{animation:stget .5s cubic-bezier(.2,1.6,.4,1)}
-@keyframes stget{0%{transform:scale(.3) rotate(20deg)}100%{transform:scale(1) rotate(-6deg)}}
+/* earned state — filled city colour, instant (no colour transition), wins over theme rules */
+.passport .stamp.got{border:2px solid var(--c,#e0483e);background:var(--c,#e0483e);color:#fff;transform:rotate(-6deg);
+  box-shadow:0 5px 16px -5px var(--c,#e0483e)}
+.passport .stamp.got .st-ico{filter:none;opacity:1}
+.passport .stamp.got{animation:stget .55s cubic-bezier(.2,1.6,.4,1)}
+@keyframes stget{0%{transform:scale(.3) rotate(20deg)}60%{transform:scale(1.12) rotate(-9deg)}100%{transform:scale(1) rotate(-6deg)}}
 .passport .pp-label{font-size:11.5px;color:var(--muted);width:100%}
 
 /* ---------- brave / worry flip cards ---------- */
