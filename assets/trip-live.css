@@ -96,6 +96,20 @@
 @keyframes stget{0%{transform:scale(.3) rotate(20deg)}60%{transform:scale(1.12) rotate(-9deg)}100%{transform:scale(1) rotate(-6deg)}}
 .passport .pp-label{font-size:11.5px;color:var(--muted);width:100%}
 
+/* ---------- live Wikivoyage highlights ---------- */
+.wv{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
+.wv summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--text);list-style:none;display:flex;align-items:center;gap:6px}
+.wv summary::-webkit-details-marker{display:none}
+.wv summary::before{content:"▸";color:var(--faint);transition:transform .2s}
+.wv[open] summary::before{transform:rotate(90deg)}
+.wv .wv-n{font-size:10px;background:var(--surface2);color:var(--muted);border-radius:999px;padding:1px 7px;font-weight:600}
+.wv-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+.wv-item{font-size:12.5px;color:var(--muted);line-height:1.45}
+.wv-item b{color:var(--text)}
+.wv-item .wv-d{color:var(--muted)}
+.wv-item .wv-links{display:inline-flex;gap:8px;margin-left:6px;white-space:nowrap}
+.wv-item .wv-links a{font-size:11px}
+
 /* ---------- brave / worry flip cards ---------- */
 .bravebar{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:12.5px;color:var(--muted)}
 .bravebar .bb-track{flex:1;height:8px;border-radius:999px;background:var(--surface2);overflow:hidden}
